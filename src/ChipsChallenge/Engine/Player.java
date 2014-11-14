@@ -23,6 +23,12 @@ public class Player extends Tile {
         y = this.n / 2;
     }
     
+    public void isDead(){
+        this.life=false;
+    }
+    
+   
+    
     public char getInfo(){
         return 'o';
     }

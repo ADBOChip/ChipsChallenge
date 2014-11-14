@@ -12,6 +12,7 @@ package ChipsChallenge.Engine;
 public class Board {
     Tile[][]world;
     Player p;
+    int pGetX,pGetY;
     
     Board(){
         world = new Tile[15][15];
@@ -125,14 +126,23 @@ public class Board {
         world[14][3]= new Tembok();        
         world[11][4] = new SepatuAir();
         world[13][12] = new SepatuApi();
-                
+        this.pGetX=p.getX();
+        this.pGetY=p.getY();
         world[p.getX()][p.getY()] = new Player();
     }
     
     public void printWorld(){
         for (int i = 0; i < world.length; i++) {
             for (int j = 0; j < world.length; j++) {
-                System.out.print(world[i][j].getInfo()+" ");
+                world[this.pGetX][this.pGetY]=new Tile();
+                if((i==this.p.getX())&&(j==this.p.getY())){
+                    System.out.print("o"+" ");
+                    this.pGetX=p.getX();
+                    this.pGetY=p.getY();
+                }
+                else{
+                    System.out.print(world[i][j].getInfo()+" ");
+                }
             }
             System.out.println("");
         }
