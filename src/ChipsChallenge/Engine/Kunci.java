@@ -10,6 +10,11 @@ package ChipsChallenge.Engine;
  * @author Bimobbb
  */
 public class Kunci extends Tile {
+    
+
+    public Kunci(int xKoordinat, int yKoordinat) {
+        super(xKoordinat, yKoordinat);
+    }
  
     @Override
     public char getInfo(){

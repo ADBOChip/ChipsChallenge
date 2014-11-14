@@ -10,6 +10,16 @@ package ChipsChallenge.Engine;
  * @author Bimobbb
  */
 public class Tembok extends Tile{
+    
+    public Tembok(){
+        
+    }
+
+    public Tembok(int xKoordinat, int yKoordinat) {
+        super(xKoordinat, yKoordinat);
+    }
+
+    
       
     @Override
     public char getInfo(){

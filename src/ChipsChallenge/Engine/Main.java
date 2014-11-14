@@ -20,19 +20,19 @@ public class Main {
         Board b = new Board();
         b.printWorld();
         Scanner sc=new Scanner(System.in);
-        while(b.p.getLife()==true){
+        while(b.isAlive()==true){
             int movement=sc.nextInt();
             if(movement==2){
-                b.p.moveDown();
+                b.playerMoveDown();
             }
             else if(movement==4){
-                b.p.moveLeft();
+                b.playerMoveLeft();
             }
             else if(movement==6){
-                b.p.moveRight();
+                b.playerMoveRight();
             }
             else if(movement==8){
-                b.p.moveUp();
+                b.playerMoveUp();
             }
             b.printWorld();
         }

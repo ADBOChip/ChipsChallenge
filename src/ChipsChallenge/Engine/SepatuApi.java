@@ -10,6 +10,10 @@ package ChipsChallenge.Engine;
  * @author Bimobbb
  */
 public class SepatuApi extends Tile {
+
+    public SepatuApi(int xKoordinat, int yKoordinat) {
+        super(xKoordinat, yKoordinat);
+    }
     
     public char getInfo(){
         return '4';

@@ -10,6 +10,14 @@ package ChipsChallenge.Engine;
  * @author Bimobbb
  */
 public class Api extends Tile {
+    
+    public Api(){
+        
+    }
+
+    public Api(int xKoordinat, int yKoordinat) {
+        super(xKoordinat, yKoordinat);
+    }
 
     @Override
     public char getInfo() {
