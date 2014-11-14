@@ -7,38 +7,16 @@
  *
  * @author Bimobbb
  */
-public class Player extends Tile {
-    boolean life,sW,sF;    
+public class Player {
+    boolean life;
     int x,y;
-    int n;  
+    int n;
     
-    public Player(){
+    public Player(int n){
         life = true;
-        sW = false; // Cek memakai sepatu Air , false jika tidak 
-        sF = false; // Cek memakai sepatu Api , false jika tidak
-        this.n = 14-2;
+        this.n = n;
         x = this.n / 2;
         y = this.n / 2;
-    }
-    
-    public char getInfo(){
-        return 'o';
-    }
-    
-    public void setstatusShoeW(){
-        if(this.sW){
-            this.sW = false;
-        }else{
-            this.sW = true;
-        }
-    }
-    
-    public void setstatusShoeF(){
-        if(this.sF){
-            this.sF = false;
-        }else{
-            this.sF = true;
-        }
     }
     
     public boolean getLife(){
@@ -51,6 +29,11 @@ public class Player extends Tile {
     
     public int getY(){
         return this.y;
+    }   
+    
+    public void setPosition(int x,int y){
+        this.x = x;
+        this.y = y;
     }   
     
     public void moveUp(){
