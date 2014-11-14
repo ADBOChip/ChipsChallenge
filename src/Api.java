@@ -13,8 +13,4 @@ public class Api extends Tile {
     public char getInfo() {
         return 'f';
     }
-
-    public String coba() {
-        return "coba";
-    }
 }
