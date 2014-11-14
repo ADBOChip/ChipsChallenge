@@ -8,9 +8,13 @@
  * @author Bimobbb
  */
 public class Api extends Tile {
- 
+
     @Override
-    public char getInfo(){
+    public char getInfo() {
         return 'f';
+    }
+
+    public String coba() {
+        return "coba";
     }
 }
