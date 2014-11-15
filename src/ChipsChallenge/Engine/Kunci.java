@@ -11,6 +11,9 @@ package ChipsChallenge.Engine;
  */
 public class Kunci extends Tile {
     
+    public Kunci(){
+        
+    }
 
     public Kunci(int xKoordinat, int yKoordinat) {
         super(xKoordinat, yKoordinat);

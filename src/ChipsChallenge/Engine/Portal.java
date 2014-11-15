@@ -10,6 +10,10 @@ package ChipsChallenge.Engine;
  * @author Bimobbb
  */
 public class Portal extends Tile {
+    
+    public Portal(){
+        
+    }
 
     public Portal(int xKoordinat, int yKoordinat) {
         super(xKoordinat, yKoordinat);

@@ -11,17 +11,13 @@ package ChipsChallenge.Engine;
  */
 
 public class Player extends Tile {
-    boolean life,sW,sF;    
-    int n;  
+    private boolean life,sW,sF;    
     
     public Player(int xKoordinat,int yKoordinat){
         super(xKoordinat, yKoordinat);
         life = true;
         sW = false; // Cek memakai sepatu Air , false jika tidak 
         sF = false; // Cek memakai sepatu Api , false jika tidak
-        n = 14-2;
-        this.x=6;
-        this.y=6;
     }
     
     public void isDead(){
@@ -34,11 +30,19 @@ public class Player extends Tile {
     }
     
     public void setstatusShoeW(boolean shoesWater){
-        this.sW=true;
+        this.sW=shoesWater;
+    }
+    
+    public boolean getStatusShoeF(){
+        return this.sF;
+    }
+    
+    public boolean getStatusShoeW(){
+        return this.sW;
     }
     
      public void setstatusShoeF(boolean shoesFire){
-        this.sF=true;
+        this.sF=shoesFire;
     }
     
     public boolean getLife(){

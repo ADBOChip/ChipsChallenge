@@ -10,6 +10,10 @@ package ChipsChallenge.Engine;
  * @author Bimobbb
  */
 public class SepatuAir extends Tile {
+    
+    public SepatuAir(){
+        
+    }
 
     public SepatuAir(int xKoordinat, int yKoordinat) {
         super(xKoordinat, yKoordinat);

@@ -17,13 +17,18 @@ public class Board {
     private Pintu door;
     private Api fire;
     private Air water;
-    
-    
+    private SepatuAir sAir;
+    private SepatuApi sApi;
+    private Portal port;
     
     Board(){
         wall=new Tembok();
         fire=new Api();
         water=new Air();
+        door=new Pintu();
+        port=new Portal();
+        sApi=new SepatuApi();
+        sAir=new SepatuAir();
         world = new Tile[15][15];
         p = new Player(6,6);
         for (int i = 0; i < world.length; i++) {
@@ -135,9 +140,9 @@ public class Board {
         world[14][3]= new Tembok(14,3);        
         world[11][4] = new SepatuAir(11,4);
         world[13][12] = new SepatuApi(13,12);
-        this.pGetX=p.getX();
-        this.pGetY=p.getY();
-        world[p.getX()][p.getY()] = new Player(p.getX(),p.getY());
+        this.pGetX=6;
+        this.pGetY=6;
+        world[pGetX][pGetY] = new Player(pGetX,pGetY);
     }
     
     public void printWorld(){
@@ -158,14 +163,34 @@ public class Board {
     }
     
     public void playerMoveUp(){
-        if(world[pGetX--][pGetY].equals(wall)){
+        if(world[pGetX-1][pGetY].getInfo()==wall.getInfo()){
             
         }
-        else if(world[pGetX--][pGetY]==fire){
-            this.p.isDead();
+        else if(world[pGetX-1][pGetY].getInfo()==fire.getInfo()){
+            if(this.p.getStatusShoeF()==true){
+                this.p.x--;
+            }
+            else{
+                this.p.isDead();
+            }
         }
-        else if(world[pGetX--][pGetY]==water){
-            this.p.isDead();
+        else if(world[pGetX-1][pGetY].getInfo()==water.getInfo()){
+            if(this.p.getStatusShoeF()==true){
+                this.p.x--;
+            }
+            else{
+                this.p.isDead();
+            }
+        }
+        else if(world[pGetX-1][pGetY].getInfo()==sAir.getInfo()){
+            this.p.setstatusShoeW(true);
+            this.p.x--;
+            
+        }
+        else if(world[pGetX-1][pGetY].getInfo()==sApi.getInfo()){
+            this.p.setstatusShoeF(true);
+            this.p.x--;
+            
         }
         else{
             this.p.x--;
@@ -175,49 +200,117 @@ public class Board {
     }
     
     public void playerMoveDown(){
-        if(world[pGetX--][pGetY].equals(wall)){
+        if(world[pGetX+1][pGetY].getInfo()==wall.getInfo()){
             
         }
-        else if(world[pGetX--][pGetY].equals(fire)){
-            this.p.isDead();
+        else if(world[pGetX+1][pGetY].getInfo()==fire.getInfo()){
+            if(this.p.getStatusShoeF()==true){
+                this.p.x++;
+            }
+            else{
+                this.p.isDead();
+            }   
         }
-        else if(world[pGetX--][pGetY].equals(water)){
-            this.p.isDead();
+        else if(world[pGetX+1][pGetY].getInfo()==water.getInfo()){
+            if(this.p.getStatusShoeW()==true){
+                this.p.x++;
+            }
+            else{
+                this.p.isDead();
+            }   
+        }
+        else if(world[pGetX+1][pGetY].getInfo()==sAir.getInfo()){
+            this.p.setstatusShoeW(true);
+            this.p.x++;
+            
+        }
+        else if(world[pGetX+1][pGetY].getInfo()==sApi.getInfo()){
+            this.p.setstatusShoeF(true);
+            this.p.x++;
+            
         }
         else{
-        this.p.x++;
+            this.p.x++;
         }
         
     }
     
     public void playerMoveLeft(){
-        if(world[pGetX--][pGetY].equals(wall)){
+        this.pGetX=p.getX();
+        this.pGetY=p.getY();
+        if(world[pGetX][pGetY-1].getInfo()==wall.getInfo()){
             
         }
-        else if(world[pGetX--][pGetY].equals(fire)){
-            this.p.isDead();
+        else if(world[pGetX][pGetY-1].getInfo()==fire.getInfo()){
+            if(this.p.getStatusShoeF()==true){
+                this.p.y--;
+            }
+            else{
+                this.p.isDead();
+            }   
         }
-        else if(world[pGetX--][pGetY].equals(water)){
-            this.p.isDead();
+        else if(world[pGetX][pGetY-1].getInfo()==water.getInfo()){
+            if(this.p.getStatusShoeW()==true){
+                this.p.y--;
+            }
+            else{
+                this.p.isDead();
+            }  
+        }
+        else if(world[pGetX][pGetY-1].getInfo()==sAir.getInfo()){
+            this.p.setstatusShoeW(true);
+            world[pGetX][pGetY-1]=new Tile(pGetX+1,pGetY);
+        }
+        else if(world[pGetX][pGetY-1].getInfo()==sApi.getInfo()){
+            this.p.setstatusShoeF(true);
+            world[pGetX][pGetY-1]=new Tile(pGetX+1,pGetY);
+        }
+        else if(world[pGetX][pGetY-1].getInfo()==sAir.getInfo()){
+            this.p.setstatusShoeW(true);
+            world[pGetX][pGetY-1]=new Tile(pGetX+1,pGetY);
+        }
+        else if(world[pGetX][pGetY-1].getInfo()==sApi.getInfo()){
+            this.p.setstatusShoeF(true);
+            world[pGetX][pGetY-1]=new Tile(pGetX+1,pGetY);
         }
         else{
-        this.p.y--;
+            this.p.y--;
         }
         
     }
     
     public void playerMoveRight(){
-        if(world[pGetX--][pGetY].equals(wall)){
+        this.pGetX=p.getX();
+        this.pGetY=p.getY();
+        if(world[pGetX][pGetY+1].getInfo()==wall.getInfo()){
             
         }
-        else if(world[pGetX--][pGetY].equals(fire)){
-            this.p.isDead();
+        else if(world[pGetX][pGetY+1].getInfo()==fire.getInfo()){
+            if(this.p.getStatusShoeF()==true){
+                this.p.y++;
+            }
+            else{
+                this.p.isDead();
+            }  
         }
-        else if(world[pGetX--][pGetY].equals(water)){
-            this.p.isDead();
+        else if(world[pGetX][pGetY+1].getInfo()==water.getInfo()){
+            if(this.p.getStatusShoeW()==true){
+                this.p.y++;
+            }
+            else{
+                this.p.isDead();
+            }  
+        }
+        else if(world[pGetX][pGetY+1].getInfo()==sAir.getInfo()){
+            this.p.setstatusShoeW(true);
+            world[pGetX][pGetY+1]=new Tile(pGetX+1,pGetY);
+        }
+        else if(world[pGetX][pGetY+1].getInfo()==sApi.getInfo()){
+            this.p.setstatusShoeF(true);
+            world[pGetX][pGetY+1]=new Tile(pGetX+1,pGetY);
         }
         else{
-        this.p.y++;
+            this.p.y++;
         }
         
     }   

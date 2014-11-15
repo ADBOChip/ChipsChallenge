@@ -10,6 +10,10 @@ package ChipsChallenge.Engine;
  * @author Bimobbb
  */
 public class Pintu extends Tile {
+    
+    public Pintu(){
+        
+    }
 
     public Pintu(int xKoordinat, int yKoordinat) {
         super(xKoordinat, yKoordinat);
