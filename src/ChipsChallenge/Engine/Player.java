@@ -49,6 +49,20 @@ public class Player extends Tile {
         return this.life;
     }
     
+    public void moveUp(){
+        this.x--;
+                
+    }
     
-   
+    public void moveDown(){
+        this.x++;
+    }
+    
+    public void moveLeft(){
+        this.y--;
+    }
+    
+   public void moveRight(){
+       this.y++;
+   }
 }
