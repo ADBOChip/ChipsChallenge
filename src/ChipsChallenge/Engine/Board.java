@@ -273,7 +273,7 @@ public class Board {
 
     public void playerMoveRight() {
         
-        if (this.p.getY() != 15) {
+        if (this.p.getY() != 14) {
             this.temp = world[this.p.getX()][this.p.getY() + 1];
             if (world[this.p.getX()][this.p.getY() + 1].getInfo() == wall.getInfo()) {
 
