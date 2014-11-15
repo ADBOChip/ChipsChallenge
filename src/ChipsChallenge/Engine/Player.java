@@ -11,7 +11,8 @@ package ChipsChallenge.Engine;
  */
 
 public class Player extends Tile {
-    private boolean life,sW,sF;    
+    private boolean life,sW,sF;  
+    private int jumlahKunci;
     
     public Player(int xKoordinat,int yKoordinat){
         super(xKoordinat, yKoordinat);
@@ -65,4 +66,26 @@ public class Player extends Tile {
    public void moveRight(){
        this.y++;
    }
+   
+    public void addKunci(){
+        this.jumlahKunci++;
+    }
+    
+    public void pakaiKunci(){
+        if(jumlahKunci>=1){
+            this.jumlahKunci--;
+        }
+    }
+    
+    public boolean bisaBukaPintu(){
+        boolean result=false;
+        if(jumlahKunci>=1){
+            return true;
+        }
+        return result;
+    }
+    
+    public void endGame(){
+        this.isDead();
+    }
 }

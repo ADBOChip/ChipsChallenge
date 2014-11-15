@@ -23,4 +23,6 @@ public class Kunci extends Tile {
     public char getInfo(){
         return '5';
     }
+    
+   
 }

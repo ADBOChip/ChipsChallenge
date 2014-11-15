@@ -19,6 +19,7 @@ public class Board {
     private SepatuAir sAir;
     private SepatuApi sApi;
     private Portal port;
+    private Kunci key;
     private Tile temp = new Tile();
 
     Board() {
@@ -29,6 +30,7 @@ public class Board {
         port = new Portal();
         sApi = new SepatuApi();
         sAir = new SepatuAir();
+        key = new Kunci();
         world = new Tile[15][15];
         p = new Player(6, 6);
         for (int i = 0; i < world.length; i++) {
@@ -173,7 +175,6 @@ public class Board {
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == fire.getInfo()) {
                 if (this.p.getStatusShoeF() == true) {
                     this.p.moveUp();
-                    world[this.p.getX() - 1][this.p.getY()] = new Api(this.p.getX() - 1, this.p.getY());
                 } else {
                     this.p.isDead();
                 }
@@ -183,6 +184,13 @@ public class Board {
                 } else {
                     this.p.isDead();
                 }
+            } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == door.getInfo()) {
+                if (this.p.bisaBukaPintu() == true) {
+                    this.p.moveUp();
+                    this.p.pakaiKunci();
+                } else {
+
+                }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == sAir.getInfo()) {
                 this.p.setstatusShoeW(true);
                 this.p.moveUp();
@@ -191,6 +199,11 @@ public class Board {
                 this.p.setstatusShoeF(true);
                 this.p.moveUp();
 
+            } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == key.getInfo()) {
+                this.p.addKunci();
+                this.p.moveUp();
+            } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == port.getInfo()) {
+                this.p.endGame();
             } else {
                 this.p.moveUp();
             }
@@ -216,6 +229,13 @@ public class Board {
                 } else {
                     this.p.isDead();
                 }
+            } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == door.getInfo()) {
+                if (this.p.bisaBukaPintu() == true) {
+                    this.p.moveDown();
+                    this.p.pakaiKunci();
+                } else {
+
+                }
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == sAir.getInfo()) {
                 this.p.setstatusShoeW(true);
                 this.p.moveDown();
@@ -224,12 +244,16 @@ public class Board {
                 this.p.setstatusShoeF(true);
                 this.p.moveDown();
 
+            } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == key.getInfo()) {
+                this.p.addKunci();
+                this.p.moveDown();
+            } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == port.getInfo()) {
+                this.p.endGame();
             } else {
                 this.p.moveDown();
             }
-        }
-        else{
-            
+        } else {
+
         }
 
     }
@@ -252,18 +276,24 @@ public class Board {
                 } else {
                     this.p.isDead();
                 }
+            } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == door.getInfo()) {
+                if (this.p.bisaBukaPintu() == true) {
+                    this.p.moveLeft();
+                    this.p.pakaiKunci();
+                } else {
+
+                }
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == sAir.getInfo()) {
                 this.p.setstatusShoeW(true);
                 world[this.p.getX()][this.p.getY() - 1] = new Tile(this.p.getX() + 1, this.p.getY());
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == sApi.getInfo()) {
                 this.p.setstatusShoeF(true);
                 world[this.p.getX()][this.p.getY() - 1] = new Tile(this.p.getX() + 1, this.p.getY());
-            } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == sAir.getInfo()) {
-                this.p.setstatusShoeW(true);
-                world[this.p.getX()][this.p.getY() - 1] = new Tile(this.p.getX() + 1, this.p.getY());
-            } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == sApi.getInfo()) {
-                this.p.setstatusShoeF(true);
-                world[this.p.getX()][this.p.getY() - 1] = new Tile(this.p.getX() + 1, this.p.getY());
+            } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == key.getInfo()) {
+                this.p.addKunci();
+                this.p.moveLeft();
+            } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == port.getInfo()) {
+                this.p.endGame();
             } else {
                 this.p.moveLeft();
             }
@@ -272,7 +302,7 @@ public class Board {
     }
 
     public void playerMoveRight() {
-        
+
         if (this.p.getY() != 14) {
             this.temp = world[this.p.getX()][this.p.getY() + 1];
             if (world[this.p.getX()][this.p.getY() + 1].getInfo() == wall.getInfo()) {
@@ -289,12 +319,24 @@ public class Board {
                 } else {
                     this.p.isDead();
                 }
+            } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == door.getInfo()) {
+                if (this.p.bisaBukaPintu() == true) {
+                    this.p.moveRight();
+                    this.p.pakaiKunci();
+                } else {
+
+                }
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == sAir.getInfo()) {
                 this.p.setstatusShoeW(true);
                 world[this.p.getX()][this.p.getY() + 1] = new Tile(this.p.getX() + 1, this.p.getY());
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == sApi.getInfo()) {
                 this.p.setstatusShoeF(true);
                 world[this.p.getX()][this.p.getY() + 1] = new Tile(this.p.getX() + 1, this.p.getY());
+            } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == key.getInfo()) {
+                this.p.addKunci();
+                this.p.moveRight();
+            } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == port.getInfo()) {
+                this.p.endGame();
             } else {
                 this.p.moveRight();
             }
@@ -302,8 +344,7 @@ public class Board {
 
     }
 
-
-public boolean isAlive() {
+    public boolean isAlive() {
         return this.p.getLife();
     }
 
