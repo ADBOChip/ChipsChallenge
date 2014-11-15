@@ -4,6 +4,7 @@
  */
 package ChipsChallenge.GUI;
 
+import ChipsChallenge.gfx.SpriteSheet;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -12,6 +13,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -36,7 +38,9 @@ public class Game extends Canvas implements Runnable {
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 
-    public Game() {
+    private SpriteSheet sheet;
+    public Game(){
+        this.sheet = new SpriteSheet("\\SpriteShit.png");
         setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -123,7 +127,7 @@ public class Game extends Canvas implements Runnable {
         bs.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         new Game().start();
     }
 
