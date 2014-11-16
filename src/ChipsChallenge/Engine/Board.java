@@ -20,6 +20,8 @@ public class Board {
     private SepatuApi sApi;
     private Portal port;
     private Kunci key;
+    private Chip chips;
+    private int sisaChips=0;
     private Tile temp = new Tile();
 
     Board() {
@@ -142,6 +144,16 @@ public class Board {
         world[14][3] = new Tembok(14, 3);
         world[11][4] = new SepatuAir(11, 4);
         world[13][12] = new SepatuApi(13, 12);
+        world[1][0] = new Chip(1, 0);
+        this.sisaChips++;
+        world[1][13] = new Chip(1, 13);
+        this.sisaChips++;
+        world[11][1] = new Chip(11, 1);
+        this.sisaChips++;
+        world[2][6] = new Chip(2, 6);
+        this.sisaChips++;
+        world[10][11] = new Chip(10, 11);
+        this.sisaChips++;
         world[this.p.getX()][this.p.getY()] = new Player(this.p.getX(), this.p.getY());
     }
 
@@ -203,6 +215,7 @@ public class Board {
                 this.p.addKunci();
                 this.p.moveUp();
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == port.getInfo()) {
+                this.p.moveUp();
                 this.p.endGame();
             } else {
                 this.p.moveUp();
@@ -248,6 +261,7 @@ public class Board {
                 this.p.addKunci();
                 this.p.moveDown();
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == port.getInfo()) {
+                this.p.moveDown();
                 this.p.endGame();
             } else {
                 this.p.moveDown();
@@ -293,6 +307,7 @@ public class Board {
                 this.p.addKunci();
                 this.p.moveLeft();
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == port.getInfo()) {
+                this.p.moveLeft();
                 this.p.endGame();
             } else {
                 this.p.moveLeft();
@@ -336,6 +351,7 @@ public class Board {
                 this.p.addKunci();
                 this.p.moveRight();
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == port.getInfo()) {
+                this.p.moveRight();
                 this.p.endGame();
             } else {
                 this.p.moveRight();
