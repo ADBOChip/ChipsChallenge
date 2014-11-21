@@ -60,31 +60,24 @@ public class ChipImageDrawer extends JPanel {
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_UP:
                             cc.moveChipUp();
-                            board = cc.kembalikanBoard();
+                            repaint();
                             break;
                         case KeyEvent.VK_DOWN:
                             cc.moveChipDown();
-                            board = cc.kembalikanBoard();
+                            repaint();
                             break;
                         case KeyEvent.VK_LEFT:
                             cc.moveChipLeft();
-                            board = cc.kembalikanBoard();
+                            repaint();
                             break;
                         case KeyEvent.VK_RIGHT:
                             cc.moveChipRight();
-                            board = cc.kembalikanBoard();
+                            repaint();
                             break;
 
                     }
                     System.out.println(cc.chipIsAlive());
                 }
-                for (int i = 0; i < board.length; i++) {
-                    for (int j = 0; j < board[i].length; j++) {
-                        System.out.print(board[i][j].getInfo()+" ");
-                    }
-                    System.out.println("");
-                }
-                repaint();
             }
         }
         );
@@ -110,44 +103,37 @@ public class ChipImageDrawer extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+        this.board = cc.kembalikanBoard();
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
+
+        System.out.println("");
         Graphics2D g2d = (Graphics2D) g;
         for (int i = 0; i < cc.pjgBoard(); i++) {
             for (int j = 0; j < cc.pjgBoard(); j++) {
-                switch (board[j][i].getInfo() + "") {
-                    case "-":
-                        g2d.drawImage(tileBiasa, i * 32, j * 32, this);
-                        break;
-                    case "w":
-                        g2d.drawImage(air, i * 32, j * 32, this);
-                        break;
-                    case "f":
-                        g2d.drawImage(api, i * 32, j * 32, this);
-                        break;
-                    case "#":
-                        g2d.drawImage(chip, i * 32, j * 32, this);
-                        break;
-                    case "o":
-                        g2d.drawImage(playerBawah, i * 32, j * 32, this);
-                        break;
-                    case "1":
-                        g2d.drawImage(tembok, i * 32, j * 32, this);
-                        break;
-                    case "6":
-                        g2d.drawImage(portal, i * 32, j * 32, this);
-                        break;
-                    case "3":
-                        g2d.drawImage(sepatuAir, i * 32, j * 32, this);
-                        break;
-                    case "4":
-                        g2d.drawImage(sepatuApi, i * 32, j * 32, this);
-                        break;
-                    case "2":
-                        g2d.drawImage(pintu, i * 32, j * 32, this);
-                        break;
-                    case "5":
-                        g2d.drawImage(kunci, i * 32, j * 32, this);
-                        break;
+                if (cc.getTileInfo(j, i) == '-') {
+                    g2d.drawImage(tileBiasa, i * 32, j * 32, this);
+
+                } else if (cc.getTileInfo(j, i) == 'w') {
+                    g2d.drawImage(air, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == 'f') {
+                    g2d.drawImage(api, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == '#') {
+                    g2d.drawImage(chip, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == 'o') {
+                    g2d.drawImage(playerBawah, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == '1') {
+                    g2d.drawImage(tembok, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == '6') {
+                    g2d.drawImage(portal, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == '3') {
+                    g2d.drawImage(sepatuAir, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == '4') {
+                    g2d.drawImage(sepatuApi, i * 32, j * 32, this);
+
+                } else if (cc.getTileInfo(j, i) == '2') {
+                    g2d.drawImage(pintu, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == '5') {
+                    g2d.drawImage(kunci, i * 32, j * 32, this);
                 }
             }
         }

@@ -21,10 +21,20 @@ public class Board {
     private Portal port;
     private Kunci key;
     private Chip chips;
+    private Tile tile;
     private int sisaChips = 0;
-    private Tile temp = new Tile();
+    private Tile temp;
+    private int tempX;
+    private int tempY;
+    
 
     public Board() {
+        world = new Tile[15][15];
+        for (int i = 0; i < world.length; i++) {
+            for (int j = 0; j < world.length; j++) {
+                world[i][j] = new Tile(i, j);
+            }
+        }
         wall = new Tembok();
         fire = new Api();
         water = new Air();
@@ -33,16 +43,12 @@ public class Board {
         sApi = new SepatuApi();
         sAir = new SepatuAir();
         key = new Kunci();
-        world = new Tile[15][15];
-        chips=new Chip();
+        tile = new Tile();
+        chips = new Chip();
         p = new Player(6, 6);
-        for (int i = 0; i < world.length; i++) {
-            for (int j = 0; j < world.length; j++) {
-                world[i][j] = new Tile(i, j);
-            }
-        }
+        temp = new Tile(6,7);
         world[0][14] = new Portal(0, 14);
-        world[0][0] = new Kunci(0, 0);
+        world[2][0] = new Kunci(2, 0);
         world[6][0] = new Kunci(6, 0);
         world[10][1] = new Kunci(10, 1);
         world[13][14] = new Kunci(13, 14);
@@ -155,39 +161,40 @@ public class Board {
         this.sisaChips++;
         world[10][11] = new Chip(10, 11);
         this.sisaChips++;
-        world[this.p.getX()][this.p.getY()] = new Player(this.p.getX(), this.p.getY());
+        world[6][6] = p;
+
     }
 
     public void printWorld() {
         for (int i = 0; i < world.length; i++) {
             for (int j = 0; j < world.length; j++) {
                 if (temp.getInfo() == water.getInfo()) {
-                    world[this.p.getX()][this.p.getY()] = new Air(this.p.getX(), this.p.getY());
+                    world[this.tempX][this.tempY] = new Air(this.tempX,this.tempY);
                 } else if (temp.getInfo() == fire.getInfo()) {
-                    world[this.p.getX()][this.p.getY()] = new Api(this.p.getX(), this.p.getY());
-                } else {
-                    world[this.p.getX()][this.p.getY()] = new Tile(this.p.getX(), this.p.getY());
+                    world[this.tempX][this.tempY] = new Api(this.tempX, this.tempY);
+                } else{
+                    world[this.tempX][this.tempY] = new Tile(this.tempX,this.tempY);
                 }
+                 world[this.p.getX()][this.p.getY()] = p;
 
-                if ((i == this.p.getX()) && (j == this.p.getY())) {
-                    System.out.print("o" + " ");
-                } else {
-                    System.out.print(world[i][j].getInfo() + " ");
-                }
+                System.out.print(world[i][j].getInfo() + " ");
+
             }
+
             System.out.println("");
         }
     }
-    
-    public String getTileInfo(int x , int y)
-    {
-        return world[x][y].getInfo()+"";
+
+    public char getTileInfo(int x, int y) {
+        return world[x][y].getInfo();
     }
 
     public void playerMoveUp() {
 
         if (this.p.getX() != 0) {
             this.temp = world[this.p.getX() - 1][this.p.getY()];
+            this.tempX=this.p.getX();
+            this.tempY=this.p.getY();
             if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == fire.getInfo()) {
@@ -197,7 +204,7 @@ public class Board {
                     this.p.isDead();
                 }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == water.getInfo()) {
-                if (this.p.getStatusShoeF() == true) {
+                if (this.p.getStatusShoeW() == true) {
                     this.p.moveUp();
                 } else {
                     this.p.isDead();
@@ -240,6 +247,8 @@ public class Board {
 
         if (this.p.getX() != 14) {
             this.temp = world[this.p.getX() + 1][this.p.getY()];
+            this.tempX=this.p.getX();
+            this.tempY=this.p.getY();
             if (world[this.p.getX() + 1][this.p.getY()].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == fire.getInfo()) {
@@ -293,6 +302,8 @@ public class Board {
 
         if (this.p.getY() != 0) {
             this.temp = world[this.p.getX()][this.p.getY() - 1];
+            this.tempX=this.p.getX();
+            this.tempY=this.p.getY();
             if (world[this.p.getX()][this.p.getY() - 1].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == fire.getInfo()) {
@@ -342,6 +353,8 @@ public class Board {
 
         if (this.p.getY() != 14) {
             this.temp = world[this.p.getX()][this.p.getY() + 1];
+            this.tempX=this.p.getX();
+            this.tempY=this.p.getY();
             if (world[this.p.getX()][this.p.getY() + 1].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == fire.getInfo()) {
@@ -378,37 +391,29 @@ public class Board {
                     this.p.endGame();
                 }
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == chips.getInfo()) {
-                    this.p.moveRight();
-                    this.sisaChips--; 
-            }
-            else {
+                this.p.moveRight();
+                this.sisaChips--;
+            } else {
                 this.p.moveRight();
             }
         }
     }
-    
-
-
-
 
     public boolean isAlive() {
         return this.p.getLife();
     }
-    
-    public int panjangTile()
-    {
+
+    public int panjangTile() {
         return world.length;
     }
-    
-    public Board getBoard()
-    {
+
+    public Board getBoard() {
         return this;
     }
-    
-    public Tile[][] kembalikanTile()
-    {
-        this.printWorld();
+
+    public Tile[][] kembalikanTile() {
+//        this.printWorld();
         return this.world;
-        
+
     }
 }

@@ -17,9 +17,11 @@ public class Player extends Tile {
     public Player(int xKoordinat,int yKoordinat){
         super(xKoordinat, yKoordinat);
         life = true;
+        this.jumlahKunci=0;
         sW = false; // Cek memakai sepatu Air , false jika tidak 
         sF = false; // Cek memakai sepatu Api , false jika tidak
     }
+
     
     public boolean isAlive()
     {

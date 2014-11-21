@@ -15,7 +15,7 @@ import ChipsChallenge.grafficStorage.ChipImageDrawer;
 public class ChipsController {
 
     ChipImageDrawer GUI;
-    private Board b;
+    private final Board b;
 
     public ChipsController() {
         b = new Board();
@@ -50,12 +50,13 @@ public class ChipsController {
         return b.panjangTile();
     }
 
-    public String getTileInfo(int x, int y) {
+    public char getTileInfo(int x, int y) {
         return b.getTileInfo(x, y);
     }
     
     public Tile[][] kembalikanBoard()
     {
+        b.printWorld();
         return b.kembalikanTile();
     }
 }
