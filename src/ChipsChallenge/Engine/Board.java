@@ -407,6 +407,8 @@ public class Board {
     
     public Tile[][] kembalikanTile()
     {
+        this.printWorld();
         return this.world;
+        
     }
 }

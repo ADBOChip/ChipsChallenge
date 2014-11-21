@@ -23,23 +23,23 @@ public class ChipsController {
 
     public void moveChipUp() {
         b.playerMoveUp();
-        b.printWorld();
+       
 
     }
 
     public void moveChipDown() {
         b.playerMoveDown();
-        b.printWorld();
+        
     }
 
     public void moveChipLeft() {
         b.playerMoveLeft();
-        b.printWorld();
+        
     }
 
     public void moveChipRight() {
         b.playerMoveRight();
-        b.printWorld();
+        
     }
 
     public boolean chipIsAlive() {
