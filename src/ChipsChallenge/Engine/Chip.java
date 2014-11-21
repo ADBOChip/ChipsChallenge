@@ -17,6 +17,7 @@ public class Chip extends Tile{
     public Chip(int xKoordinat, int yKoordinat) {
         super(xKoordinat, yKoordinat);
     }
+    @Override
      public char getInfo(){
         return '#';
     }

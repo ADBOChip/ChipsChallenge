@@ -34,6 +34,7 @@ public class Board {
         sAir = new SepatuAir();
         key = new Kunci();
         world = new Tile[15][15];
+        chips=new Chip();
         p = new Player(6, 6);
         for (int i = 0; i < world.length; i++) {
             for (int j = 0; j < world.length; j++) {
@@ -367,19 +368,23 @@ public class Board {
                 this.p.addKunci();
                 this.p.moveRight();
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == port.getInfo()) {
-                this.p.moveRight();
-                this.p.endGame();
-            } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == chips.getInfo()) {
                 if (this.sisaChips == 0) {
                     this.p.moveRight();
-                    this.sisaChips--;
+                    this.p.endGame();
                 }
-            } else {
+            } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == chips.getInfo()) {
+                    this.p.moveRight();
+                    this.sisaChips--; 
+            }
+            else {
                 this.p.moveRight();
             }
         }
-
     }
+    
+
+
+
 
     public boolean isAlive() {
         return this.p.getLife();
