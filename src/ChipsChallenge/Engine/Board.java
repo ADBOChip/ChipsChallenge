@@ -21,7 +21,7 @@ public class Board {
     private Portal port;
     private Kunci key;
     private Chip chips;
-    private int sisaChips=0;
+    private int sisaChips = 0;
     private Tile temp = new Tile();
 
     Board() {
@@ -215,8 +215,14 @@ public class Board {
                 this.p.addKunci();
                 this.p.moveUp();
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == port.getInfo()) {
+                if (this.sisaChips == 0) {
+                    this.p.moveUp();
+                    this.p.endGame();
+                }
+
+            } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == chips.getInfo()) {
                 this.p.moveUp();
-                this.p.endGame();
+                this.sisaChips--;
             } else {
                 this.p.moveUp();
             }
@@ -261,8 +267,13 @@ public class Board {
                 this.p.addKunci();
                 this.p.moveDown();
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == port.getInfo()) {
+                if (this.sisaChips == 0) {
+                    this.p.moveDown();
+                    this.p.endGame();
+                }
+            } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == chips.getInfo()) {
                 this.p.moveDown();
-                this.p.endGame();
+                this.sisaChips--;
             } else {
                 this.p.moveDown();
             }
@@ -307,8 +318,13 @@ public class Board {
                 this.p.addKunci();
                 this.p.moveLeft();
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == port.getInfo()) {
+                if (this.sisaChips == 0) {
+                    this.p.moveLeft();
+                    this.p.endGame();
+                }
+            } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == chips.getInfo()) {
                 this.p.moveLeft();
-                this.p.endGame();
+                this.sisaChips--;
             } else {
                 this.p.moveLeft();
             }
@@ -353,6 +369,11 @@ public class Board {
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == port.getInfo()) {
                 this.p.moveRight();
                 this.p.endGame();
+            } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == chips.getInfo()) {
+                if (this.sisaChips == 0) {
+                    this.p.moveRight();
+                    this.sisaChips--;
+                }
             } else {
                 this.p.moveRight();
             }
