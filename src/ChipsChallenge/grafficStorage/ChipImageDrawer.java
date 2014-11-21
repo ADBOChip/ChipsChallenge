@@ -46,13 +46,11 @@ public class ChipImageDrawer extends JPanel {
     private Image playerKiri;
     private Image playerKanan;
     private Image kunci;
-    private Tile[][] board;
     private ChipsController cc;
 
     public ChipImageDrawer() {
         setFocusable(true);
         this.cc = new ChipsController();
-        this.board = cc.kembalikanBoard();
         loadImages();
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
@@ -76,7 +74,6 @@ public class ChipImageDrawer extends JPanel {
                             break;
 
                     }
-                    System.out.println(cc.chipIsAlive());
                 }
             }
         }
@@ -103,14 +100,13 @@ public class ChipImageDrawer extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        this.board = cc.kembalikanBoard();
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
 
         System.out.println("");
         Graphics2D g2d = (Graphics2D) g;
-        for (int i = 0; i < cc.pjgBoard(); i++) {
-            for (int j = 0; j < cc.pjgBoard(); j++) {
-                if (cc.getTileInfo(j, i) == '-') {
+        for (int i = 0; i < this.cc.pjgBoard(); i++) {
+            for (int j = 0; j < this.cc.pjgBoard(); j++) {
+                if (this.cc.getTileInfo(j, i) == '-') {
                     g2d.drawImage(tileBiasa, i * 32, j * 32, this);
 
                 } else if (cc.getTileInfo(j, i) == 'w') {

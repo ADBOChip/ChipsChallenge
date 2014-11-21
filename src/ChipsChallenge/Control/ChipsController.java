@@ -15,48 +15,44 @@ import ChipsChallenge.grafficStorage.ChipImageDrawer;
 public class ChipsController {
 
     ChipImageDrawer GUI;
-    private final Board b;
+    private Board b,c; 
 
     public ChipsController() {
         b = new Board();
+        this.b.newGame();
+        c=new Board();
     }
 
     public void moveChipUp() {
-        b.playerMoveUp();
-       
+        this.b.playerMoveUp();
+        this.b.repaintMap();
 
     }
 
     public void moveChipDown() {
-        b.playerMoveDown();
-        
+        this.b.playerMoveDown();
+        this.b.repaintMap();
     }
 
     public void moveChipLeft() {
-        b.playerMoveLeft();
-        
+        this.b.playerMoveLeft();
+        this.b.repaintMap();
     }
 
     public void moveChipRight() {
-        b.playerMoveRight();
-        
+        this.b.playerMoveRight();
+        this.b.repaintMap();
     }
 
     public boolean chipIsAlive() {
-        return b.isAlive();
+        return this.b.isAlive();
     }
 
     public int pjgBoard() {
-        return b.panjangTile();
+        return this.b.panjangTile();
     }
 
     public char getTileInfo(int x, int y) {
-        return b.getTileInfo(x, y);
-    }
-    
-    public Tile[][] kembalikanBoard()
-    {
-        b.printWorld();
-        return b.kembalikanTile();
+        return this.b.getTileInfo(x, y);
     }
 }
