@@ -24,7 +24,7 @@ public class Board {
     private int sisaChips = 0;
     private Tile temp = new Tile();
 
-    Board() {
+    public Board() {
         wall = new Tembok();
         fire = new Api();
         water = new Air();
@@ -177,6 +177,11 @@ public class Board {
             }
             System.out.println("");
         }
+    }
+    
+    public String getTileInfo(int x , int y)
+    {
+        return world[x][y].getInfo()+"";
     }
 
     public void playerMoveUp() {
@@ -389,5 +394,19 @@ public class Board {
     public boolean isAlive() {
         return this.p.getLife();
     }
-
+    
+    public int panjangTile()
+    {
+        return world.length;
+    }
+    
+    public Board getBoard()
+    {
+        return this;
+    }
+    
+    public Tile[][] kembalikanTile()
+    {
+        return this.world;
+    }
 }

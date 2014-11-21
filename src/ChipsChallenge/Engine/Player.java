@@ -11,7 +11,7 @@ package ChipsChallenge.Engine;
  */
 
 public class Player extends Tile {
-    private boolean life,sW,sF;  
+    private boolean life, sW, sF;  
     private int jumlahKunci;
     
     public Player(int xKoordinat,int yKoordinat){
@@ -19,6 +19,11 @@ public class Player extends Tile {
         life = true;
         sW = false; // Cek memakai sepatu Air , false jika tidak 
         sF = false; // Cek memakai sepatu Api , false jika tidak
+    }
+    
+    public boolean isAlive()
+    {
+        return this.life = true;
     }
     
     public void isDead(){
