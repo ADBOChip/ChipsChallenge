@@ -61,26 +61,28 @@ public class ChipImageDrawer extends JPanel {
                         case KeyEvent.VK_UP:
                             cc.moveChipUp();
                             board = cc.kembalikanBoard();
-                            repaint();
                             break;
                         case KeyEvent.VK_DOWN:
                             cc.moveChipDown();
                             board = cc.kembalikanBoard();
-                            repaint();
                             break;
                         case KeyEvent.VK_LEFT:
                             cc.moveChipLeft();
                             board = cc.kembalikanBoard();
-                            repaint();
                             break;
                         case KeyEvent.VK_RIGHT:
                             cc.moveChipRight();
                             board = cc.kembalikanBoard();
-                            repaint();
                             break;
 
                     }
                     System.out.println(cc.chipIsAlive());
+                }
+                for (int i = 0; i < board.length; i++) {
+                    for (int j = 0; j < board[i].length; j++) {
+                        System.out.print(board[i][j].getInfo()+" ");
+                    }
+                    System.out.println("");
                 }
                 repaint();
             }
@@ -100,9 +102,6 @@ public class ChipImageDrawer extends JPanel {
             this.sepatuApi = ImageIO.read(new File("src\\Image\\Pokeball_merah.png"));
             this.tembok = ImageIO.read(new File("src\\Image\\Wepear_tree.png"));
             this.playerBawah = ImageIO.read(new File("src\\Image\\Trainer_Bawah.png"));
-            this.playerAtas = ImageIO.read(new File("src\\Image\\Trainer_Atas.png"));
-            this.playerKiri = ImageIO.read(new File("src\\Image\\Trainer_Kiri.png"));
-            this.playerKanan = ImageIO.read(new File("src\\Image\\Trainer_Kanan.png"));
             this.kunci = ImageIO.read(new File("src\\Image\\Pokeball_biru.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
