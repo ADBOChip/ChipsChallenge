@@ -53,7 +53,7 @@ public class ChipImageDrawer extends JPanel {
     public ChipImageDrawer() {
         setFocusable(true);
         this.cc = new ChipsController();
-        loadImages();
+        loadImages();        
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 if (cc.chipIsAlive()) {
@@ -74,7 +74,6 @@ public class ChipImageDrawer extends JPanel {
                             cc.moveChipRight();
                             repaint();
                             break;
-
                     }
                 }
             }
