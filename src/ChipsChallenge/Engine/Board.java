@@ -208,12 +208,14 @@ public class Board {
                 if (this.p.getStatusShoeF() == true) {
                     this.p.moveUp();
                 } else {
+                    this.p.moveUp();
                     this.p.isDead();
                 }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == water.getInfo()) {
                 if (this.p.getStatusShoeW() == true) {
                     this.p.moveUp();
                 } else {
+                    this.p.moveUp();
                     this.p.isDead();
                 }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == door.getInfo()) {
@@ -264,12 +266,14 @@ public class Board {
                 if (this.p.getStatusShoeF() == true) {
                     this.p.moveDown();
                 } else {
+                    this.p.moveDown();
                     this.p.isDead();
                 }
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == water.getInfo()) {
                 if (this.p.getStatusShoeW() == true) {
                     this.p.moveDown();
                 } else {
+                    this.p.moveDown();
                     this.p.isDead();
                 }
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == door.getInfo()) {
@@ -321,12 +325,14 @@ public class Board {
                 if (this.p.getStatusShoeF() == true) {
                     this.p.moveLeft();
                 } else {
+                    this.p.moveLeft();
                     this.p.isDead();
                 }
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == water.getInfo()) {
                 if (this.p.getStatusShoeW() == true) {
                     this.p.moveLeft();
                 } else {
+                    this.p.moveLeft();
                     this.p.isDead();
                 }
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == door.getInfo()) {
@@ -374,12 +380,14 @@ public class Board {
                 if (this.p.getStatusShoeF() == true) {
                     this.p.moveRight();
                 } else {
+                    this.p.moveRight();
                     this.p.isDead();
                 }
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == water.getInfo()) {
                 if (this.p.getStatusShoeW() == true) {
                     this.p.moveRight();
                 } else {
+                    this.p.moveRight();
                     this.p.isDead();
                 }
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == door.getInfo()) {
