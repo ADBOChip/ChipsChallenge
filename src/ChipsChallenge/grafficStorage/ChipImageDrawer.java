@@ -88,17 +88,17 @@ public class ChipImageDrawer extends JPanel {
      */
     public void loadImages() {
         try {
-            this.tileBiasa = ImageIO.read(new File("src\\Image\\tile.png"));
+            this.tileBiasa = ImageIO.read(new File("src\\Image\\tilebiasa.png"));
             this.air = ImageIO.read(new File("src\\Image\\air.png"));
             this.api = ImageIO.read(new File("src\\Image\\api.png"));
             this.chip = ImageIO.read(new File("src\\Image\\Chips.png"));
-            this.pintu = ImageIO.read(new File("src\\Image\\Wepear_tree.png"));
+            this.pintu = ImageIO.read(new File("src\\Image\\wall.png"));
             this.portal = ImageIO.read(new File("src\\Image\\Portal.jpg"));
             this.sepatuAir = ImageIO.read(new File("src\\Image\\Pokeball_biru.png"));
             this.sepatuApi = ImageIO.read(new File("src\\Image\\Pokeball_merah.png"));
-            this.tembok = ImageIO.read(new File("src\\Image\\Wepear_tree.png"));
+            this.tembok = ImageIO.read(new File("src\\Image\\tree.png"));
             this.playerBawah = ImageIO.read(new File("src\\Image\\Trainer_Bawah.png"));
-            this.kunci = ImageIO.read(new File("src\\Image\\Pokeball_biru.png"));
+            this.kunci = ImageIO.read(new File("src\\Image\\copper.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
