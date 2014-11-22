@@ -53,7 +53,7 @@ public class ChipImageDrawer extends JPanel {
     public ChipImageDrawer() {
         setFocusable(true);
         this.cc = new ChipsController();
-        loadImages();        
+        loadImages();
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 if (cc.chipIsAlive()) {
@@ -109,7 +109,6 @@ public class ChipImageDrawer extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-
         System.out.println("");
         Graphics2D g2d = (Graphics2D) g;
         for (int i = 0; i < this.cc.pjgBoard(); i++) {
