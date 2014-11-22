@@ -5,10 +5,6 @@
  */
 package ChipsChallenge.Engine;
 
-/**
- *
- * @author RickyWahyudi
- */
 public class Chip extends Tile{
     public Chip(){
         

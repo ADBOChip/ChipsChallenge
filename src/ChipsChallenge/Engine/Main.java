@@ -7,10 +7,6 @@ import java.util.Scanner;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Bimobbb
- */
 public class Main {
 
     /**
@@ -22,16 +18,16 @@ public class Main {
         Scanner sc=new Scanner(System.in);
         while(b.isAlive()==true){
             int movement=sc.nextInt();
-            if(movement==2){
+            if(movement == 2){
                 b.playerMoveDown();
             }
-            else if(movement==4){
+            else if(movement == 4){
                 b.playerMoveLeft();
             }
-            else if(movement==6){
+            else if(movement == 6){
                 b.playerMoveRight();
             }
-            else if(movement==8){
+            else if(movement == 8){
                 b.playerMoveUp();
             }
             b.printWorld();

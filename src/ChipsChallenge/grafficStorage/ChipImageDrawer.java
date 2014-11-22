@@ -27,8 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 /**
- *
- * @author KevinT
+ * Merupakan Kelas View dalam MVC
  */
 public class ChipImageDrawer extends JPanel {
 
@@ -48,7 +47,10 @@ public class ChipImageDrawer extends JPanel {
     private Image kunci;
     private Tile[][] board;
     private ChipsController cc;
-
+    
+    /**
+     * Konstruktor
+     */
     public ChipImageDrawer() {
         setFocusable(true);
         this.cc = new ChipsController();
@@ -83,6 +85,10 @@ public class ChipImageDrawer extends JPanel {
         );
     }
 
+    /**
+     * Method untuk meload gambar(image)
+     * menggunakan javax.imageio.ImageIO
+     */
     public void loadImages() {
         try {
             this.tileBiasa = ImageIO.read(new File("src\\Image\\tile.png"));
@@ -101,6 +107,9 @@ public class ChipImageDrawer extends JPanel {
         }
     }
 
+    /**
+     * Method untuk menampilkan component yang dibuat ke dalam suatu canvas
+     */
     @Override
     protected void paintComponent(Graphics g) {
         this.board = cc.kembalikanBoard();
@@ -112,7 +121,6 @@ public class ChipImageDrawer extends JPanel {
             for (int j = 0; j < cc.pjgBoard(); j++) {
                 if (cc.getTileInfo(j, i) == '-') {
                     g2d.drawImage(tileBiasa, i * 32, j * 32, this);
-
                 } else if (cc.getTileInfo(j, i) == 'w') {
                     g2d.drawImage(air, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == 'f') {
@@ -129,7 +137,6 @@ public class ChipImageDrawer extends JPanel {
                     g2d.drawImage(sepatuAir, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == '4') {
                     g2d.drawImage(sepatuApi, i * 32, j * 32, this);
-
                 } else if (cc.getTileInfo(j, i) == '2') {
                     g2d.drawImage(pintu, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == '5') {

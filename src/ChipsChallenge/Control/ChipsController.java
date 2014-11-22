@@ -9,12 +9,11 @@ import ChipsChallenge.Engine.Tile;
 import ChipsChallenge.grafficStorage.ChipImageDrawer;
 
 /**
- *
- * @author KevinT
+ * Merupakan Controller dalam MVC
  */
 public class ChipsController {
-
     ChipImageDrawer GUI;
+    //final agar tidak dapat diubah dari kelas lain
     private final Board b;
 
     public ChipsController() {
@@ -23,23 +22,18 @@ public class ChipsController {
 
     public void moveChipUp() {
         b.playerMoveUp();
-       
-
     }
 
     public void moveChipDown() {
-        b.playerMoveDown();
-        
+        b.playerMoveDown();        
     }
 
     public void moveChipLeft() {
-        b.playerMoveLeft();
-        
+        b.playerMoveLeft();        
     }
 
     public void moveChipRight() {
-        b.playerMoveRight();
-        
+        b.playerMoveRight();        
     }
 
     public boolean chipIsAlive() {
@@ -54,6 +48,10 @@ public class ChipsController {
         return b.getTileInfo(x, y);
     }
     
+    /**
+     * memanggil method kembalikanTile dari kelas Board
+     * @return array of Tile yang menjadi world 
+     */
     public Tile[][] kembalikanBoard()
     {
         b.printWorld();

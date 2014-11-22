@@ -5,10 +5,6 @@ package ChipsChallenge.Engine;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Bimobbb
- */
 public class SepatuAir extends Tile {
     
     public SepatuAir(){
