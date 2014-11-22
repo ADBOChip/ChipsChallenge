@@ -26,17 +26,9 @@ public class Board {
     private Tile temp;
     private int tempX;
     private int tempY;
-<<<<<<< HEAD
-    
-    /**
-     * Consructor Kelas
-     * World di input manual
-     */
-=======
     private int tempAirApiX;
     private int tempAirApiY;
-
->>>>>>> origin/master
+    
     public Board() {
         world = new Tile[15][15];
         for (int i = 0; i < world.length; i++) {
@@ -192,36 +184,14 @@ public class Board {
         world[13][11] = new Api(13, 11);
         world[13][13] = new Api(13, 13);
     }
-<<<<<<< HEAD
     
     /**
      * Menampilkan world Tile ke layar
-     */
-    public void printWorld() {
-        for (int i = 0; i < world.length; i++) {
-            for (int j = 0; j < world.length; j++) {
-                if (temp.getInfo() == water.getInfo()) {
-                    world[this.tempX][this.tempY] = new Air(this.tempX,this.tempY);
-                } else if (temp.getInfo() == fire.getInfo()) {
-                    world[this.tempX][this.tempY] = new Api(this.tempX, this.tempY);
-                } else{
-                    world[this.tempX][this.tempY] = new Tile(this.tempX,this.tempY);
-                }
-                 world[this.p.getX()][this.p.getY()] = p;
-
-                System.out.print(world[i][j].getInfo() + " ");
-
-            }
-
-            System.out.println("");
-        }
-=======
-
+     */   
     public void repaintMap() {
         world[this.tempX][this.tempY] = new Tile(this.tempX, this.tempY);
         this.paintWaterFire();
         world[this.p.getX()][this.p.getY()] = p;
->>>>>>> origin/master
     }
 
     public char getTileInfo(int x, int y) {
@@ -239,19 +209,16 @@ public class Board {
     public void playerMoveUp() {
         if (this.p.getX() != 0) {
             this.temp = world[this.p.getX() - 1][this.p.getY()];
-<<<<<<< HEAD
             this.tempX=this.p.getX();
             this.tempY=this.p.getY();
             if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) { 
+                this.tempX = this.p.getX();
+                this.tempY = this.p.getY();
+                this.tempAirApiX = temp.getX();
+                this.tempAirApiY = temp.getY();
+                if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) {
                 
-=======
-            this.tempX = this.p.getX();
-            this.tempY = this.p.getY();
-            this.tempAirApiX = temp.getX();
-            this.tempAirApiY = temp.getY();
-            if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) {
-
->>>>>>> origin/master
+                }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == fire.getInfo()) {
                 if (this.p.getStatusShoeF() == true) {
                     this.p.moveUp();

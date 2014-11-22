@@ -13,12 +13,7 @@ import ChipsChallenge.grafficStorage.ChipImageDrawer;
  */
 public class ChipsController {
     ChipImageDrawer GUI;
-<<<<<<< HEAD
-    //final agar tidak dapat diubah dari kelas lain
-    private final Board b;
-=======
-    private Board b,c; 
->>>>>>> origin/master
+    private Board b,c;
 
     public ChipsController() {
         b = new Board();
@@ -27,22 +22,12 @@ public class ChipsController {
     }
 
     public void moveChipUp() {
-<<<<<<< HEAD
-        b.playerMoveUp();
-    }
-
-    public void moveChipDown() {
-        b.playerMoveDown();        
-    }
-
-    public void moveChipLeft() {
-        b.playerMoveLeft();        
-    }
-
-    public void moveChipRight() {
-        b.playerMoveRight();        
-=======
         this.b.playerMoveUp();
+        this.b.repaintMap();
+    }
+    
+    public void moveChipRight() {
+        b.playerMoveRight();
         this.b.repaintMap();
 
     }
@@ -57,11 +42,6 @@ public class ChipsController {
         this.b.repaintMap();
     }
 
-    public void moveChipRight() {
-        this.b.playerMoveRight();
-        this.b.repaintMap();
->>>>>>> origin/master
-    }
 
     public boolean chipIsAlive() {
         return this.b.isAlive();
@@ -72,20 +52,7 @@ public class ChipsController {
     }
 
     public char getTileInfo(int x, int y) {
-<<<<<<< HEAD
-        return b.getTileInfo(x, y);
+        return this.b.getTileInfo(x, y);
     }
     
-    /**
-     * memanggil method kembalikanTile dari kelas Board
-     * @return array of Tile yang menjadi world 
-     */
-    public Tile[][] kembalikanBoard()
-    {
-        b.printWorld();
-        return b.kembalikanTile();
-=======
-        return this.b.getTileInfo(x, y);
->>>>>>> origin/master
-    }
 }
