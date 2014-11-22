@@ -141,16 +141,4 @@ public class ChipImageDrawer extends JPanel {
             }
         }
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Ash Challenge");
-        frame.setBackground(Color.GREEN);
-        frame.pack();
-        frame.add(new ChipImageDrawer());
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setSize(new Dimension(600, 600));
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
 }
