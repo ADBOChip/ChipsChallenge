@@ -5,8 +5,8 @@ package ChipsChallenge.Engine;
  * and open the template in the editor.
  */
 /**
- *
- * @author Bimobbb
+ * Kelas pengatur dari Model-model 
+ * Model : Tile-tile yang ada pada package (Api,Air,Chip,dll)
  */
 public class Board {
 
@@ -26,7 +26,13 @@ public class Board {
     private Tile temp;
     private int tempX;
     private int tempY;
+
     private int level;
+
+
+    private int tempAirApiX;
+    private int tempAirApiY;
+    
 
     public Board() {
         level=1;
@@ -189,7 +195,10 @@ public class Board {
         }
         
     }
-
+    
+    /**
+     * Menampilkan world Tile ke layar
+     */   
     public void repaintMap() {
         world[this.tempX][this.tempY] = new Tile(this.tempX, this.tempY);
         this.paintWaterFire();
@@ -200,20 +209,36 @@ public class Board {
         return world[x][y].getInfo();
     }
     
+
     public void levelDua(){
         for (int i = 0; i < world.length; i++) {
             for (int j = 0; j < world.length; j++) {
                 world[i][j] = new Tile(i, j);
             }
         }
-    }
 
+    }
+    /**
+     * Method untuk membuat player berpindah posisi (x-1)
+     * Jika bertemu wall, diam
+     * Jika bertemu air, dan tidak pakai sepatu mati
+     * Jika bertemu api, dan tidak pakai sepatu mati
+     * Jika bertemu pintu, dan tidak memiliki kunci (bisaBukaPintu = false) diam
+     * Jika bertemu sepatu, setstatussepatu = true
+     */
     public void playerMoveUp() {
         if (this.p.getX() != 0) {
             this.temp = world[this.p.getX() - 1][this.p.getY()];
-            this.tempX = this.p.getX();
-            this.tempY = this.p.getY();
-            if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) {
+            this.tempX=this.p.getX();
+            this.tempY=this.p.getY();
+            if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) { 
+                this.tempX = this.p.getX();
+                this.tempY = this.p.getY();
+                this.tempAirApiX = temp.getX();
+                this.tempAirApiY = temp.getY();
+                if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) {
+                
+                }
 
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == fire.getInfo()) {
                 if (this.p.getStatusShoeF() == true) {
@@ -233,8 +258,6 @@ public class Board {
                 if (this.p.bisaBukaPintu() == true) {
                     this.p.moveUp();
                     this.p.pakaiKunci();
-                } else {
-
                 }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == sAir.getInfo()) {
                 this.p.setstatusShoeW(true);
@@ -253,7 +276,6 @@ public class Board {
                     this.level++;
                     this.levelDua();
                 }
-
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == chips.getInfo()) {
                 this.p.moveUp();
                 this.sisaChips--;
@@ -263,7 +285,15 @@ public class Board {
         }
 
     }
-
+    
+    /**
+     * Method untuk membuat player berpindah posisi (x+1)
+     * Jika bertemu wall, diam
+     * Jika bertemu air, dan tidak pakai sepatu mati
+     * Jika bertemu api, dan tidak pakai sepatu mati
+     * Jika bertemu pintu, dan tidak memiliki kunci (bisaBukaPintu = false) diam
+     * Jika bertemu sepatu, setstatussepatu = true
+     */
     public void playerMoveDown() {
 
         if (this.p.getX() != 14) {
@@ -290,8 +320,6 @@ public class Board {
                 if (this.p.bisaBukaPintu() == true) {
                     this.p.moveDown();
                     this.p.pakaiKunci();
-                } else {
-
                 }
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == sAir.getInfo()) {
                 this.p.setstatusShoeW(true);
@@ -320,7 +348,15 @@ public class Board {
         }
 
     }
-
+    
+    /**
+     * Method untuk membuat player berpindah posisi (y-1)
+     * Jika bertemu wall, diam
+     * Jika bertemu air, dan tidak pakai sepatu mati
+     * Jika bertemu api, dan tidak pakai sepatu mati
+     * Jika bertemu pintu, dan tidak memiliki kunci (bisaBukaPintu = false) diam
+     * Jika bertemu sepatu, setstatussepatu = true
+     */
     public void playerMoveLeft() {
 
         if (this.p.getY() != 0) {
@@ -347,8 +383,6 @@ public class Board {
                 if (this.p.bisaBukaPintu() == true) {
                     this.p.moveLeft();
                     this.p.pakaiKunci();
-                } else {
-
                 }
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == sAir.getInfo()) {
                 this.p.setstatusShoeW(true);
@@ -373,7 +407,15 @@ public class Board {
         }
 
     }
-
+    
+    /**
+     * Method untuk membuat player berpindah posisi (y+1)
+     * Jika bertemu wall, diam
+     * Jika bertemu air, dan tidak pakai sepatu mati
+     * Jika bertemu api, dan tidak pakai sepatu mati
+     * Jika bertemu pintu, dan tidak memiliki kunci (bisaBukaPintu = false) diam
+     * Jika bertemu sepatu, setstatussepatu = true
+     */
     public void playerMoveRight() {
 
         if (this.p.getY() != 14) {
@@ -400,8 +442,6 @@ public class Board {
                 if (this.p.bisaBukaPintu() == true) {
                     this.p.moveRight();
                     this.p.pakaiKunci();
-                } else {
-
                 }
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == sAir.getInfo()) {
                 this.p.setstatusShoeW(true);
@@ -425,21 +465,31 @@ public class Board {
             }
         }
     }
-
+    
+    /**
+     * Mengecek apakah Player masih hidup atau mati
+     * @return true or false
+     */
     public boolean isAlive() {
         return this.p.getLife();
     }
-
+    
+    /**
+     * Mengetahui panjang world
+     * @return panjang array : int  
+     */
     public int panjangTile() {
         return world.length;
     }
-
+    
+    /**
+     * Method untuk mendapat data Board sekarang 
+     */
     public Board getBoard() {
         return this;
     }
 
     public Tile[][] kembalikanTile() {
-//        this.printWorld();
         return this.world;
 
     }
