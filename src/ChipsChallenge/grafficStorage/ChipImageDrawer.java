@@ -45,18 +45,20 @@ public class ChipImageDrawer extends JPanel {
     private Image playerKiri;
     private Image playerKanan;
     private Image kunci;
+    private Image theEnd;
     private ChipsController cc;
-    
+
     /**
      * Konstruktor
      */
     public ChipImageDrawer() {
+
         setFocusable(true);
         this.cc = new ChipsController();
         loadImages();
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
-                if (cc.chipIsAlive()) {
+                if ((cc.chipIsAlive())) {
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_UP:
                             cc.moveChipUp();
@@ -75,15 +77,25 @@ public class ChipImageDrawer extends JPanel {
                             repaint();
                             break;
                     }
+                    if (cc.chipIsWin() == true) {
+                        try {
+                            Thread.sleep(900);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(ChipImageDrawer.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        cc.Selesai();
+                        repaint();
+                    }
+
                 }
             }
+
         }
         );
     }
 
     /**
-     * Method untuk meload gambar(image)
-     * menggunakan javax.imageio.ImageIO
+     * Method untuk meload gambar(image) menggunakan javax.imageio.ImageIO
      */
     public void loadImages() {
         try {
@@ -97,7 +109,11 @@ public class ChipImageDrawer extends JPanel {
             this.sepatuApi = ImageIO.read(new File("src\\Image\\Pokeball_merah.png"));
             this.tembok = ImageIO.read(new File("src\\Image\\tree.png"));
             this.playerBawah = ImageIO.read(new File("src\\Image\\Trainer_Bawah.png"));
+            this.playerAtas = ImageIO.read(new File("src\\Image\\Trainer_Atas.png"));
+            this.playerKiri = ImageIO.read(new File("src\\Image\\Trainer_Kiri.png"));
+            this.playerKanan = ImageIO.read(new File("src\\Image\\Trainer_Kanan.png"));
             this.kunci = ImageIO.read(new File("src\\Image\\copper.png"));
+            this.theEnd = ImageIO.read(new File("src\\Image\\white.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -110,8 +126,8 @@ public class ChipImageDrawer extends JPanel {
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-        System.out.println("");
         Graphics2D g2d = (Graphics2D) g;
+
         for (int i = 0; i < this.cc.pjgBoard(); i++) {
             for (int j = 0; j < this.cc.pjgBoard(); j++) {
                 if (this.cc.getTileInfo(j, i) == '-') {
@@ -122,8 +138,17 @@ public class ChipImageDrawer extends JPanel {
                     g2d.drawImage(api, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == '#') {
                     g2d.drawImage(chip, i * 32, j * 32, this);
-                } else if (cc.getTileInfo(j, i) == 'o') {
+                } else if (cc.getTileInfo(j, i) == 'o' && cc.getArahKepala() == 2) {
                     g2d.drawImage(playerBawah, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == 'o' && cc.getArahKepala() == 4) {
+                    g2d.drawImage(playerKiri, i * 32, j * 32, this);
+                    if (cc.getSelesai() == true) {
+                    g2d.drawImage(this.theEnd, 0, 0, this);
+                }
+                } else if (cc.getTileInfo(j, i) == 'o' && cc.getArahKepala() == 6) {
+                    g2d.drawImage(playerKanan, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == 'o' && cc.getArahKepala() == 8) {
+                    g2d.drawImage(playerAtas, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == '1') {
                     g2d.drawImage(tembok, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == '6') {
@@ -137,7 +162,9 @@ public class ChipImageDrawer extends JPanel {
                 } else if (cc.getTileInfo(j, i) == '5') {
                     g2d.drawImage(kunci, i * 32, j * 32, this);
                 }
+                
             }
         }
+        
     }
 }
