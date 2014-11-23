@@ -100,9 +100,7 @@ public class ChipImageDrawer extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-
-        System.out.println("");
+        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates
         Graphics2D g2d = (Graphics2D) g;
         for (int i = 0; i < this.cc.pjgBoard(); i++) {
             for (int j = 0; j < this.cc.pjgBoard(); j++) {

@@ -26,10 +26,10 @@ public class Board {
     private Tile temp;
     private int tempX;
     private int tempY;
-    private int tempAirApiX;
-    private int tempAirApiY;
+    private int level;
 
     public Board() {
+        level=1;
         world = new Tile[15][15];
         for (int i = 0; i < world.length; i++) {
             for (int j = 0; j < world.length; j++) {
@@ -105,6 +105,7 @@ public class Board {
     }
 
     public void paintWaterFire() {
+        if(this.level==1){
         for (int i = 0; i < 3; i++) {
             for (int j = 1; j < 3; j++) {
                 world[i][j] = new Air(i, j);
@@ -182,7 +183,11 @@ public class Board {
             }
         }
         world[13][11] = new Api(13, 11);
-        world[13][13] = new Api(13, 13);
+        world[13][13] = new Api(13, 13);    
+        }else{
+            
+        }
+        
     }
 
     public void repaintMap() {
@@ -194,14 +199,20 @@ public class Board {
     public char getTileInfo(int x, int y) {
         return world[x][y].getInfo();
     }
+    
+    public void levelDua(){
+        for (int i = 0; i < world.length; i++) {
+            for (int j = 0; j < world.length; j++) {
+                world[i][j] = new Tile(i, j);
+            }
+        }
+    }
 
     public void playerMoveUp() {
         if (this.p.getX() != 0) {
             this.temp = world[this.p.getX() - 1][this.p.getY()];
             this.tempX = this.p.getX();
             this.tempY = this.p.getY();
-            this.tempAirApiX = temp.getX();
-            this.tempAirApiY = temp.getY();
             if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == fire.getInfo()) {
@@ -239,7 +250,8 @@ public class Board {
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == port.getInfo()) {
                 if (this.sisaChips == 0) {
                     this.p.moveUp();
-                    this.p.endGame();
+                    this.level++;
+                    this.levelDua();
                 }
 
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == chips.getInfo()) {
@@ -258,8 +270,6 @@ public class Board {
             this.temp = world[this.p.getX() + 1][this.p.getY()];
             this.tempX = this.p.getX();
             this.tempY = this.p.getY();
-            this.tempAirApiX = temp.getX();
-            this.tempAirApiY = temp.getY();
             if (world[this.p.getX() + 1][this.p.getY()].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == fire.getInfo()) {
@@ -317,8 +327,6 @@ public class Board {
             this.temp = world[this.p.getX()][this.p.getY() - 1];
             this.tempX = this.p.getX();
             this.tempY = this.p.getY();
-            this.tempAirApiX = temp.getX();
-            this.tempAirApiY = temp.getY();
             if (world[this.p.getX()][this.p.getY() - 1].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == fire.getInfo()) {
@@ -372,8 +380,6 @@ public class Board {
             this.temp = world[this.p.getX()][this.p.getY() + 1];
             this.tempX = this.p.getX();
             this.tempY = this.p.getY();
-            this.tempAirApiX = temp.getX();
-            this.tempAirApiY = temp.getY();
             if (world[this.p.getX()][this.p.getY() + 1].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == fire.getInfo()) {
