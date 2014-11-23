@@ -7,20 +7,24 @@ package ChipsChallenge.Control;
 import ChipsChallenge.Engine.Board;
 import ChipsChallenge.Engine.Tile;
 import ChipsChallenge.grafficStorage.ChipImageDrawer;
+import ChipsChallenge.Audio.AudioBackground;
 
 /**
  *
  * @author KevinT
  */
 public class ChipsController {
-
+    AudioBackground ad;
     ChipImageDrawer GUI;
     private Board b,c; 
 
     public ChipsController() {
+        ad=new AudioBackground();
+        ad.play();
         b = new Board();
         this.b.newGame();
         c=new Board();
+        
     }
 
     public void moveChipUp() {
