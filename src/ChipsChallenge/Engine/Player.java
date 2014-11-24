@@ -11,7 +11,7 @@ public class Player extends Tile {
      * sW : status memakai sepatu Air
      * sF : status memakai sepatu Api
      */
-    private boolean life, sW, sF;  
+    private boolean life, sW, sF,isWin;  
     private int jumlahKunci;
     
     public Player(int xKoordinat,int yKoordinat){
@@ -20,6 +20,7 @@ public class Player extends Tile {
         this.jumlahKunci = 0;
         sW = false; // di set false di awal permainan 
         sF = false; // di set false di awal permainan
+        isWin=false;
     }
     
     /**
@@ -137,6 +138,9 @@ public class Player extends Tile {
      * Mengeset player bila game berakhir
      */
     public void endGame(){
-        this.isDead();
+        this.isWin=true;
+    }
+    public Boolean getIsWinStat(){
+        return this.isWin;
     }
 }

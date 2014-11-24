@@ -5,8 +5,8 @@ package ChipsChallenge.Engine;
  * and open the template in the editor.
  */
 /**
- * Kelas pengatur dari Model-model 
- * Model : Tile-tile yang ada pada package (Api,Air,Chip,dll)
+ * Kelas pengatur dari Model-model Model : Tile-tile yang ada pada package
+ * (Api,Air,Chip,dll)
  */
 public class Board {
 
@@ -22,14 +22,19 @@ public class Board {
     private Kunci key;
     private Chip chips;
     private Tile tile;
-    private int sisaChips = 0;
+    private int sisaChips;
     private Tile temp;
     private int tempX;
     private int tempY;
+
+    private int level;
+
     private int tempAirApiX;
     private int tempAirApiY;
-    
+
     public Board() {
+        sisaChips = 0;
+        level = 1;
         world = new Tile[15][15];
         for (int i = 0; i < world.length; i++) {
             for (int j = 0; j < world.length; j++) {
@@ -105,89 +110,95 @@ public class Board {
     }
 
     public void paintWaterFire() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 1; j < 3; j++) {
-                world[i][j] = new Air(i, j);
-            }
-        }
-        for (int i = 11; i < 15; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i == 11 && j == 1) {
-
-                } else {
+        if (this.level == 1) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 1; j < 3; j++) {
                     world[i][j] = new Air(i, j);
                 }
             }
-        }
-        for (int i = 5; i < 8; i++) {
-            world[5][i] = new Air(5, i);
-        }
-        for (int i = 5; i < 8; i++) {
-            world[8][i] = new Air(8, i);
-        }
-        for (int i = 11; i < 14; i++) {
-            world[0][i] = new Air(0, i);
-        }
-        for (int i = 12; i < 15; i++) {
-            world[2][i] = new Air(2, i);
-        }
-        for (int i = 11; i < 15; i++) {
-            world[i][10] = new Air(i, 10);
-        }
-        for (int i = 11; i < 15; i++) {
-            world[14][i] = new Air(14, i);
-        }
-        world[10][0] = new Air(10, 0);
-        world[10][2] = new Air(10, 2);
-        world[13][3] = new Air(13, 3);
-        world[6][5] = new Air(6, 5);
-        for (int i = 0; i < 3; i++) {
-            world[8][i] = new Api(8, i);
-        }
-        for (int i = 5; i < 8; i++) {
-            world[4][i] = new Api(4, i);
-        }
-        for (int i = 5; i < 8; i++) {
-            world[7][i] = new Api(7, i);
-        }
-        for (int i = 10; i < 15; i++) {
-            world[4][i] = new Api(4, i);
-        }
-        for (int i = 0; i < 2; i++) {
-            for (int j = 5; j < 8; j++) {
-                world[i][j] = new Api(i, j);
-            }
-        }
-        for (int i = 11; i < 14; i++) {
-            for (int j = 5; j < 8; j++) {
-                world[i][j] = new Api(i, j);
-            }
-        }
-        for (int i = 6; i < 11; i++) {
-            for (int j = 10; j < 15; j++) {
-                if (i == 10 && j == 11) {
+            for (int i = 11; i < 15; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (i == 11 && j == 1) {
 
-                } else {
+                    } else {
+                        world[i][j] = new Air(i, j);
+                    }
+                }
+            }
+            for (int i = 5; i < 8; i++) {
+                world[5][i] = new Air(5, i);
+            }
+            for (int i = 5; i < 8; i++) {
+                world[8][i] = new Air(8, i);
+            }
+            for (int i = 11; i < 14; i++) {
+                world[0][i] = new Air(0, i);
+            }
+            for (int i = 12; i < 15; i++) {
+                world[2][i] = new Air(2, i);
+            }
+            for (int i = 11; i < 15; i++) {
+                world[i][10] = new Air(i, 10);
+            }
+            for (int i = 11; i < 15; i++) {
+                world[14][i] = new Air(14, i);
+            }
+            world[10][0] = new Air(10, 0);
+            world[10][2] = new Air(10, 2);
+            world[13][3] = new Air(13, 3);
+            world[6][5] = new Air(6, 5);
+            for (int i = 0; i < 3; i++) {
+                world[8][i] = new Api(8, i);
+            }
+            for (int i = 5; i < 8; i++) {
+                world[4][i] = new Api(4, i);
+            }
+            for (int i = 5; i < 8; i++) {
+                world[7][i] = new Api(7, i);
+            }
+            for (int i = 10; i < 15; i++) {
+                world[4][i] = new Api(4, i);
+            }
+            for (int i = 0; i < 2; i++) {
+                for (int j = 5; j < 8; j++) {
                     world[i][j] = new Api(i, j);
                 }
             }
-        }
-        for (int i = 10; i < 13; i++) {
-            for (int j = 11; j < 15; j++) {
-                if (i == 10 && j == 11) {
-
-                } else {
+            for (int i = 11; i < 14; i++) {
+                for (int j = 5; j < 8; j++) {
                     world[i][j] = new Api(i, j);
                 }
             }
+            for (int i = 6; i < 11; i++) {
+                for (int j = 10; j < 15; j++) {
+                    if (i == 10 && j == 11) {
+
+                    } else {
+                        world[i][j] = new Api(i, j);
+                    }
+                }
+            }
+            for (int i = 10; i < 13; i++) {
+                for (int j = 11; j < 15; j++) {
+                    if (i == 10 && j == 11) {
+
+                    } else {
+                        world[i][j] = new Api(i, j);
+                    }
+                }
+            }
+            world[13][11] = new Api(13, 11);
+            world[13][13] = new Api(13, 13);
+        } else {
+            world[0][12] = new Api(0, 12);
+            world[0][13] = new Air(0, 13);
         }
-        world[13][11] = new Api(13, 11);
-        world[13][13] = new Api(13, 13);
+
     }
-    
+
     /**
      * Menampilkan world Tile ke layar
-     */   
+     */
     public void repaintMap() {
         world[this.tempX][this.tempY] = new Tile(this.tempX, this.tempY);
         this.paintWaterFire();
@@ -197,28 +208,74 @@ public class Board {
     public char getTileInfo(int x, int y) {
         return world[x][y].getInfo();
     }
-    
+
+    public void levelDua() {
+//        this.p.setstatusShoeF(false);
+//        this.p.setstatusShoeW(false);
+        for (int i = 0; i < world.length; i++) {
+            for (int j = 0; j < world.length; j++) {
+                world[i][j] = new Tile(i, j);
+            }
+        }
+        world[0][10] = new Pintu(0, 10);
+        world[2][6] = new Kunci(2, 6);
+        world[0][11] = new Portal(0, 11);
+        world[0][12] = new Api(0, 12);
+        world[0][13] = new Air(0, 13);
+        for (int i = 3; i < 4; i++) {
+            world[0][i] = new Tembok(0, i);
+        }
+        for (int i = 1; i < 14; i++) {
+            for (int j = 1; j < this.panjangTile() - 1; j++) {
+                if (j == 2 && i < 13) {
+
+                } else if (j < 13 && i == 12 && j > 2) {
+
+                } else if (j == 6 && i < 11 && i >= 2) {
+
+                } else if (j == 4 && i < 11 && i >= 1) {
+
+                } else if (j == 12 && i < 13 && i > 1) {
+
+                } else if (j > 9 && i == 2 && j < 13) {
+
+                } else if (j == 10 && i > 2 && i < 11) {
+
+                } else if (j == 8 && i < 11) {
+
+                } else if (j == 9 && i == 10) {
+
+                } else if (j == 5 && i == 10) {
+
+                } else {
+                    world[i][j] = new Tembok(i, j);
+                }
+            }
+
+        }
+
+    }
+
     /**
-     * Method untuk membuat player berpindah posisi (x-1)
-     * Jika bertemu wall, diam
-     * Jika bertemu air, dan tidak pakai sepatu mati
-     * Jika bertemu api, dan tidak pakai sepatu mati
-     * Jika bertemu pintu, dan tidak memiliki kunci (bisaBukaPintu = false) diam
-     * Jika bertemu sepatu, setstatussepatu = true
+     * Method untuk membuat player berpindah posisi (x-1) Jika bertemu wall,
+     * diam Jika bertemu air, dan tidak pakai sepatu mati Jika bertemu api, dan
+     * tidak pakai sepatu mati Jika bertemu pintu, dan tidak memiliki kunci
+     * (bisaBukaPintu = false) diam Jika bertemu sepatu, setstatussepatu = true
      */
     public void playerMoveUp() {
         if (this.p.getX() != 0) {
             this.temp = world[this.p.getX() - 1][this.p.getY()];
-            this.tempX=this.p.getX();
-            this.tempY=this.p.getY();
-            if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) { 
+            this.tempX = this.p.getX();
+            this.tempY = this.p.getY();
+            if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) {
                 this.tempX = this.p.getX();
                 this.tempY = this.p.getY();
                 this.tempAirApiX = temp.getX();
                 this.tempAirApiY = temp.getY();
                 if (world[this.p.getX() - 1][this.p.getY()].getInfo() == wall.getInfo()) {
-                
+
                 }
+
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == fire.getInfo()) {
                 if (this.p.getStatusShoeF() == true) {
                     this.p.moveUp();
@@ -235,7 +292,7 @@ public class Board {
                 }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == door.getInfo()) {
                 if (this.p.bisaBukaPintu() == true) {
-                    this.p.moveUp();
+                    world[this.p.getX() - 1][this.p.getY()] = new Tile(this.p.getX() - 1, this.p.getY());
                     this.p.pakaiKunci();
                 }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == sAir.getInfo()) {
@@ -252,7 +309,13 @@ public class Board {
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == port.getInfo()) {
                 if (this.sisaChips == 0) {
                     this.p.moveUp();
-                    this.p.endGame();
+                    if (this.level == 1) {
+                        this.level++;
+                        this.levelDua();
+                    } else {
+                        this.p.endGame();
+                    }
+
                 }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == chips.getInfo()) {
                 this.p.moveUp();
@@ -263,14 +326,12 @@ public class Board {
         }
 
     }
-    
+
     /**
-     * Method untuk membuat player berpindah posisi (x+1)
-     * Jika bertemu wall, diam
-     * Jika bertemu air, dan tidak pakai sepatu mati
-     * Jika bertemu api, dan tidak pakai sepatu mati
-     * Jika bertemu pintu, dan tidak memiliki kunci (bisaBukaPintu = false) diam
-     * Jika bertemu sepatu, setstatussepatu = true
+     * Method untuk membuat player berpindah posisi (x+1) Jika bertemu wall,
+     * diam Jika bertemu air, dan tidak pakai sepatu mati Jika bertemu api, dan
+     * tidak pakai sepatu mati Jika bertemu pintu, dan tidak memiliki kunci
+     * (bisaBukaPintu = false) diam Jika bertemu sepatu, setstatussepatu = true
      */
     public void playerMoveDown() {
 
@@ -278,8 +339,6 @@ public class Board {
             this.temp = world[this.p.getX() + 1][this.p.getY()];
             this.tempX = this.p.getX();
             this.tempY = this.p.getY();
-            this.tempAirApiX = temp.getX();
-            this.tempAirApiY = temp.getY();
             if (world[this.p.getX() + 1][this.p.getY()].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == fire.getInfo()) {
@@ -293,12 +352,11 @@ public class Board {
                 if (this.p.getStatusShoeW() == true) {
                     this.p.moveDown();
                 } else {
-                    this.p.moveDown();
                     this.p.isDead();
                 }
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == door.getInfo()) {
                 if (this.p.bisaBukaPintu() == true) {
-                    this.p.moveDown();
+                    world[this.p.getX() + 1][this.p.getY()] = new Tile(this.p.getX() - 1, this.p.getY());
                     this.p.pakaiKunci();
                 }
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == sAir.getInfo()) {
@@ -315,7 +373,12 @@ public class Board {
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == port.getInfo()) {
                 if (this.sisaChips == 0) {
                     this.p.moveDown();
-                    this.p.endGame();
+                    if (this.level == 1) {
+                        this.level++;
+                        this.levelDua();
+                    } else {
+                        this.p.endGame();
+                    }
                 }
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == chips.getInfo()) {
                 this.p.moveDown();
@@ -328,14 +391,12 @@ public class Board {
         }
 
     }
-    
+
     /**
-     * Method untuk membuat player berpindah posisi (y-1)
-     * Jika bertemu wall, diam
-     * Jika bertemu air, dan tidak pakai sepatu mati
-     * Jika bertemu api, dan tidak pakai sepatu mati
-     * Jika bertemu pintu, dan tidak memiliki kunci (bisaBukaPintu = false) diam
-     * Jika bertemu sepatu, setstatussepatu = true
+     * Method untuk membuat player berpindah posisi (y-1) Jika bertemu wall,
+     * diam Jika bertemu air, dan tidak pakai sepatu mati Jika bertemu api, dan
+     * tidak pakai sepatu mati Jika bertemu pintu, dan tidak memiliki kunci
+     * (bisaBukaPintu = false) diam Jika bertemu sepatu, setstatussepatu = true
      */
     public void playerMoveLeft() {
 
@@ -343,8 +404,6 @@ public class Board {
             this.temp = world[this.p.getX()][this.p.getY() - 1];
             this.tempX = this.p.getX();
             this.tempY = this.p.getY();
-            this.tempAirApiX = temp.getX();
-            this.tempAirApiY = temp.getY();
             if (world[this.p.getX()][this.p.getY() - 1].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == fire.getInfo()) {
@@ -363,7 +422,7 @@ public class Board {
                 }
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == door.getInfo()) {
                 if (this.p.bisaBukaPintu() == true) {
-                    this.p.moveLeft();
+                    world[this.p.getX()][this.p.getY() - 1] = new Tile(this.p.getX() - 1, this.p.getY());
                     this.p.pakaiKunci();
                 }
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == sAir.getInfo()) {
@@ -378,7 +437,12 @@ public class Board {
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == port.getInfo()) {
                 if (this.sisaChips == 0) {
                     this.p.moveLeft();
-                    this.p.endGame();
+                    if (this.level == 1) {
+                        this.level++;
+                        this.levelDua();
+                    } else {
+                        this.p.endGame();
+                    }
                 }
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == chips.getInfo()) {
                 this.p.moveLeft();
@@ -389,14 +453,12 @@ public class Board {
         }
 
     }
-    
+
     /**
-     * Method untuk membuat player berpindah posisi (y+1)
-     * Jika bertemu wall, diam
-     * Jika bertemu air, dan tidak pakai sepatu mati
-     * Jika bertemu api, dan tidak pakai sepatu mati
-     * Jika bertemu pintu, dan tidak memiliki kunci (bisaBukaPintu = false) diam
-     * Jika bertemu sepatu, setstatussepatu = true
+     * Method untuk membuat player berpindah posisi (y+1) Jika bertemu wall,
+     * diam Jika bertemu air, dan tidak pakai sepatu mati Jika bertemu api, dan
+     * tidak pakai sepatu mati Jika bertemu pintu, dan tidak memiliki kunci
+     * (bisaBukaPintu = false) diam Jika bertemu sepatu, setstatussepatu = true
      */
     public void playerMoveRight() {
 
@@ -404,8 +466,6 @@ public class Board {
             this.temp = world[this.p.getX()][this.p.getY() + 1];
             this.tempX = this.p.getX();
             this.tempY = this.p.getY();
-            this.tempAirApiX = temp.getX();
-            this.tempAirApiY = temp.getY();
             if (world[this.p.getX()][this.p.getY() + 1].getInfo() == wall.getInfo()) {
 
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == fire.getInfo()) {
@@ -424,7 +484,7 @@ public class Board {
                 }
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == door.getInfo()) {
                 if (this.p.bisaBukaPintu() == true) {
-                    this.p.moveRight();
+                    world[this.p.getX()][this.p.getY() + 1] = new Tile(this.p.getX(), this.p.getY() + 1);
                     this.p.pakaiKunci();
                 }
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == sAir.getInfo()) {
@@ -439,7 +499,13 @@ public class Board {
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == port.getInfo()) {
                 if (this.sisaChips == 0) {
                     this.p.moveRight();
-                    this.p.endGame();
+                    if (this.level == 1) {
+                        this.level++;
+                        this.levelDua();
+                    } else {
+                        this.p.moveRight();
+                        this.p.endGame();
+                    }
                 }
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == chips.getInfo()) {
                 this.p.moveRight();
@@ -449,32 +515,38 @@ public class Board {
             }
         }
     }
-    
+
     /**
      * Mengecek apakah Player masih hidup atau mati
+     *
      * @return true or false
      */
     public boolean isAlive() {
         return this.p.getLife();
     }
-    
+
+    public boolean isWin() {
+        return this.p.getIsWinStat();
+    }
+
     /**
      * Mengetahui panjang world
-     * @return panjang array : int  
+     *
+     * @return panjang array : int
      */
     public int panjangTile() {
         return world.length;
     }
-    
+
     /**
-     * Method untuk mendapat data Board sekarang 
+     * Method untuk mendapat data Board sekarang
      */
     public Board getBoard() {
         return this;
     }
 
-    public Tile[][] kembalikanTile() {
-        return this.world;
-
+    public int getSisaChips() {
+        return this.sisaChips;
     }
+
 }
