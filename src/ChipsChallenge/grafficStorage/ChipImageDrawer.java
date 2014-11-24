@@ -72,44 +72,40 @@ public class ChipImageDrawer extends JPanel {
                         case KeyEvent.VK_UP:
                             cc.moveChipUp();
                             repaint();
-                            if(cc.getSelesai()==true){
-                               cc.infoBox("Anda Menang", "Selamat");
+                            if (cc.getSelesai() == true) {
+                                cc.infoBox("Anda Menang", "Selamat");
                             }
                             break;
                         case KeyEvent.VK_DOWN:
                             cc.moveChipDown();
                             repaint();
-                            if(cc.getSelesai()==true){
-                               cc.infoBox("Anda Menang", "Selamat");
+                            if (cc.getSelesai() == true) {
+                                cc.infoBox("Anda Menang", "Selamat");
                             }
                             break;
                         case KeyEvent.VK_LEFT:
                             cc.moveChipLeft();
                             repaint();
-                            if(cc.getSelesai()==true){
-                               cc.infoBox("Anda Menang", "Selamat");
+                            if (cc.getSelesai() == true) {
+                                cc.infoBox("Anda Menang", "Selamat");
                             }
                             break;
                         case KeyEvent.VK_RIGHT:
                             cc.moveChipRight();
                             repaint();
-                            if(cc.getSelesai()==true){
-                               cc.infoBox("Anda Menang", "Selamat");
+                            if (cc.getSelesai() == true) {
+                                cc.infoBox("Anda Menang", "Selamat");
                             }
                             break;
                     }
-                    
 
                 }
-                
 
             }
-            
 
         }
         );
-        
-        
+
     }
 
     /**
@@ -148,17 +144,10 @@ public class ChipImageDrawer extends JPanel {
             ex.printStackTrace();
         }
     }
-<<<<<<< HEAD
 
-=======
-    
-    
-    
->>>>>>> origin/master
     /**
      * Method untuk menampilkan component yang dibuat ke dalam suatu canvas
      */
-    @Override
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
