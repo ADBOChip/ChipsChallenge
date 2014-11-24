@@ -544,6 +544,9 @@ public class Board {
         return this;
     }
 
+    /**
+     * Method untuk mendapat jumlah sisa chips yang masih ada di board
+     */
     public int getSisaChips() {
         return this.sisaChips;
     }

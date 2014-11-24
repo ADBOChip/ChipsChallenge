@@ -113,7 +113,7 @@ public class MainMenu extends javax.swing.JFrame {
         frame.add(new ChipImageDrawer());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(new Dimension(600, 600));
+        frame.setSize(new Dimension(700, 700));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

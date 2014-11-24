@@ -31,7 +31,7 @@ public class ChipsController {
      * Konstruktor
      */
     public ChipsController() {
-        selesai=false;
+        selesai = false;
         aD = new AudioDead();
         aB = new AudioBackground();
         aW = new AudioWin();
@@ -155,5 +155,9 @@ public class ChipsController {
     public int getArahKepala() {
         return this.arahKepala;
 
+    }
+
+    public int getSisaChips() {
+        return this.b.getSisaChips();
     }
 }
