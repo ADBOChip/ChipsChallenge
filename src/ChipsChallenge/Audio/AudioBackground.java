@@ -17,16 +17,17 @@ import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
 /**
- *
- * @author RickyWahyudi
+ * Kelas untuk menjalankan suara saat game sedang berjalan 
  */
 public class AudioBackground {
 
     private  String filename;
     private  Player player;
     
-    
-
+    /**
+     * Method untuk memainkan musik
+     * Menggunakan Thread untuk dapat berjalan selama game dimainkan
+     */
     public  void play() {
         try {
             FileInputStream fis = new FileInputStream("src/1 Hour Epic Music Mix - An Adventure - EpicMusicVn.mp3");
@@ -53,6 +54,9 @@ public class AudioBackground {
 
     }
 
+    /**
+     * Menutup permainan
+     */
     public void close() {
         player.close();
     }

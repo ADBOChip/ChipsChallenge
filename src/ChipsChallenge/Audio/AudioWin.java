@@ -10,14 +10,17 @@ import java.io.FileInputStream;
 import javazoom.jl.player.Player;
 
 /**
- *
- * @author RickyWahyudi
+ * Kelas untuk memainkan musik saat game sudah dimenangkan
+ * menggunakan Thread untuk memaikan musik 
  */
 public class AudioWin {
 
     private String filename;
     private Player player;
 
+    /**
+     * Method menjalankan musik saat player sudah mencapai portal
+     */
     public void play() {
         try {
             FileInputStream fis = new FileInputStream("src/Maranatha! Singers - Victory Song   Call To War.mp3");
@@ -43,7 +46,10 @@ public class AudioWin {
         }.start();
 
     }
-
+    
+    /**
+     * Method menutup pemutaran suara saat di restart kembali
+     */
     public void close() {
         player.close();
     }

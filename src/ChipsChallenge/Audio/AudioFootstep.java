@@ -10,8 +10,7 @@ import java.io.FileInputStream;
 import javazoom.jl.player.Player;
 
 /**
- *
- * @author RickyWahyudi
+ * Kelas untuk menjalankan suara saat player sedang melakukan pergerakan 
  */
 public class AudioFootstep {
     /*
@@ -19,13 +18,12 @@ public class AudioFootstep {
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
     private  String filename;
     private  Player player;
     
-    
-
+    /**
+     * Method untuk menjalankan suara
+     */
     public  void play() {
         try {
             FileInputStream fis = new FileInputStream("src/FOLEY HUMAN STOMP DIRT 01.mp3");
@@ -51,7 +49,10 @@ public class AudioFootstep {
         }.start();
 
     }
-
+    
+    /**
+     * Method untuk menutup suara saat player mati
+     */
     public void close() {
         player.close();
     }

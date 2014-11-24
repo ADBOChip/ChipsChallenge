@@ -10,8 +10,7 @@ import java.io.FileInputStream;
 import javazoom.jl.player.Player;
 
 /**
- *
- * @author RickyWahyudi
+ * Kelas untuk menjalankan suara saat player mati 
  */
 public class AudioDead {
     /*
@@ -25,13 +24,13 @@ public class AudioDead {
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
     private  String filename;
     private  Player player;
     
-    
-
+    /**
+     * Method untuk memainkan musik saat player mati/kecebur/kebakar
+     * Menggunakan Thread untuk dapat berjalan selama game dimainkan
+     */    
     public  void play() {
         try {
             FileInputStream fis = new FileInputStream("src/Epic Joker Laugh.mp3");
@@ -58,6 +57,9 @@ public class AudioDead {
 
     }
 
+    /**
+     * Menutup pemutar musik setelah selesai di gunakan
+     */
     public void close() {
         player.close();
     }
