@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -53,31 +54,49 @@ public class ChipImageDrawer extends JPanel {
         loadImages();
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
-                if ((cc.chipIsAlive())&&(cc.getSelesai()==false)) {
+                if ((cc.chipIsAlive()) && (cc.getSelesai() == false)) {
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_UP:
                             cc.moveChipUp();
                             repaint();
+                            if(cc.getSelesai()==true){
+                               cc.infoBox("Anda Menang", "Selamat");
+                            }
                             break;
                         case KeyEvent.VK_DOWN:
                             cc.moveChipDown();
                             repaint();
+                            if(cc.getSelesai()==true){
+                               cc.infoBox("Anda Menang", "Selamat");
+                            }
                             break;
                         case KeyEvent.VK_LEFT:
                             cc.moveChipLeft();
                             repaint();
+                            if(cc.getSelesai()==true){
+                               cc.infoBox("Anda Menang", "Selamat");
+                            }
                             break;
                         case KeyEvent.VK_RIGHT:
                             cc.moveChipRight();
                             repaint();
+                            if(cc.getSelesai()==true){
+                               cc.infoBox("Anda Menang", "Selamat");
+                            }
                             break;
                     }
+                    
 
                 }
+                
+
             }
+            
 
         }
         );
+        
+        
     }
 
     /**
@@ -104,7 +123,8 @@ public class ChipImageDrawer extends JPanel {
             ex.printStackTrace();
         }
     }
-
+    
+    
     
     /**
      * Method untuk menampilkan component yang dibuat ke dalam suatu canvas
@@ -148,7 +168,7 @@ public class ChipImageDrawer extends JPanel {
                 }
 
             }
-            
+
         }
 
     }
