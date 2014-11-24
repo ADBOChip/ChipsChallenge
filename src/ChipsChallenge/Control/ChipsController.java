@@ -12,6 +12,7 @@ import ChipsChallenge.Audio.AudioBackground;
 import ChipsChallenge.Audio.AudioDead;
 import ChipsChallenge.Audio.AudioFootstep;
 import ChipsChallenge.Audio.AudioWin;
+import javax.swing.JOptionPane;
 
 /**
  * Merupakan Controller dalam MVC
@@ -44,10 +45,16 @@ public class ChipsController {
 
     public void Selesai() {
         this.selesai = true;
+        
     }
 
     public boolean getSelesai() {
+        
         return this.selesai;
+    }
+
+    public void infoBox(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -59,9 +66,9 @@ public class ChipsController {
         this.b.repaintMap();
         aF.play();
         if (this.b.isWin() == true) {
-            this.Selesai();
             aB.close();
             aW.play();
+            this.Selesai();
         } else if (this.b.isAlive() == false) {
             aB.close();
             aD.play();
@@ -78,7 +85,7 @@ public class ChipsController {
         this.b.repaintMap();
         aF.play();
         if (this.b.isWin() == true) {
-            this.Selesai();
+ this.Selesai();
             aB.close();
             aW.play();
         } else if (this.b.isAlive() == false) {
@@ -96,7 +103,7 @@ public class ChipsController {
         this.b.repaintMap();
         aF.play();
         if (this.b.isWin() == true) {
-            this.Selesai();
+         this.Selesai();
             aB.close();
             aW.play();
         } else if (this.b.isAlive() == false) {
@@ -114,7 +121,7 @@ public class ChipsController {
         this.b.repaintMap();
         aF.play();
         if (this.b.isWin() == true) {
-            this.Selesai();
+             this.Selesai();
             aB.close();
             aW.play();
         } else if (this.b.isAlive() == false) {
