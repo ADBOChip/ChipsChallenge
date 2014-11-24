@@ -8,12 +8,7 @@ package ChipsChallenge.grafficStorage;
 import ChipsChallenge.Control.ChipsController;
 import ChipsChallenge.Engine.Board;
 import ChipsChallenge.Engine.Tile;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Event;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -46,7 +41,6 @@ public class ChipImageDrawer extends JPanel {
     private Image playerKanan;
     private Image kunci;
     private ChipsController cc;
-    
     /**
      * Konstruktor
      */
