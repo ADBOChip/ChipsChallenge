@@ -59,6 +59,7 @@ public class ChipsController {
         this.b.repaintMap();
         aF.play();
         if (this.b.isWin() == true) {
+            this.Selesai();
             aB.close();
             aW.play();
         } else if (this.b.isAlive() == false) {
@@ -77,6 +78,7 @@ public class ChipsController {
         this.b.repaintMap();
         aF.play();
         if (this.b.isWin() == true) {
+            this.Selesai();
             aB.close();
             aW.play();
         } else if (this.b.isAlive() == false) {
@@ -94,6 +96,7 @@ public class ChipsController {
         this.b.repaintMap();
         aF.play();
         if (this.b.isWin() == true) {
+            this.Selesai();
             aB.close();
             aW.play();
         } else if (this.b.isAlive() == false) {
@@ -111,6 +114,7 @@ public class ChipsController {
         this.b.repaintMap();
         aF.play();
         if (this.b.isWin() == true) {
+            this.Selesai();
             aB.close();
             aW.play();
         } else if (this.b.isAlive() == false) {

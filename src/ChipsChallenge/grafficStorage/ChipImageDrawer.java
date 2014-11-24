@@ -53,7 +53,7 @@ public class ChipImageDrawer extends JPanel {
         loadImages();
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
-                if ((cc.chipIsAlive())) {
+                if ((cc.chipIsAlive())&&(cc.getSelesai()==false)) {
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_UP:
                             cc.moveChipUp();
@@ -71,15 +71,6 @@ public class ChipImageDrawer extends JPanel {
                             cc.moveChipRight();
                             repaint();
                             break;
-                    }
-                    if (cc.chipIsWin() == true) {
-                        try {
-                            Thread.sleep(900);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(ChipImageDrawer.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        cc.Selesai();
-                        repaint();
                     }
 
                 }
@@ -114,6 +105,7 @@ public class ChipImageDrawer extends JPanel {
         }
     }
 
+    
     /**
      * Method untuk menampilkan component yang dibuat ke dalam suatu canvas
      */
@@ -137,9 +129,6 @@ public class ChipImageDrawer extends JPanel {
                     g2d.drawImage(playerBawah, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == 'o' && cc.getArahKepala() == 4) {
                     g2d.drawImage(playerKiri, i * 32, j * 32, this);
-                    if (cc.getSelesai() == true) {
-                    g2d.drawImage(this.theEnd, 0, 0, this);
-                }
                 } else if (cc.getTileInfo(j, i) == 'o' && cc.getArahKepala() == 6) {
                     g2d.drawImage(playerKanan, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == 'o' && cc.getArahKepala() == 8) {
@@ -157,9 +146,10 @@ public class ChipImageDrawer extends JPanel {
                 } else if (cc.getTileInfo(j, i) == '5') {
                     g2d.drawImage(kunci, i * 32, j * 32, this);
                 }
-                
+
             }
+            
         }
-        
+
     }
 }

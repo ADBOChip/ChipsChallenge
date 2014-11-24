@@ -210,8 +210,8 @@ public class Board {
     }
 
     public void levelDua() {
-//        this.p.setstatusShoeF(false);
-//        this.p.setstatusShoeW(false);
+        this.p.setstatusShoeF(false);
+        this.p.setstatusShoeW(false);
         for (int i = 0; i < world.length; i++) {
             for (int j = 0; j < world.length; j++) {
                 world[i][j] = new Tile(i, j);
@@ -503,7 +503,6 @@ public class Board {
                         this.level++;
                         this.levelDua();
                     } else {
-                        this.p.moveRight();
                         this.p.endGame();
                     }
                 }
