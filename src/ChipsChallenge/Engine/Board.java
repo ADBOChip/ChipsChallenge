@@ -26,7 +26,7 @@ public class Board {
     private Tile temp;
     private int tempX;
     private int tempY;
-
+    private Barrier barrier;
     private int level;
 
     private int tempAirApiX;
@@ -102,6 +102,7 @@ public class Board {
         this.sisaChips++;
         world[10][11] = new Chip(10, 11);
         this.sisaChips++;
+        barrier=new Barrier();
     }
 
     public void newGame() {
@@ -217,7 +218,8 @@ public class Board {
                 world[i][j] = new Tile(i, j);
             }
         }
-        world[0][10] = new Pintu(0, 10);
+        world[0][9] = new Pintu(0, 9);
+        world[0][10] = new Barrier(0, 10);
         world[2][6] = new Kunci(2, 6);
         world[0][11] = new Portal(0, 11);
         world[0][12] = new Api(0, 12);
@@ -317,6 +319,11 @@ public class Board {
                     }
 
                 }
+            } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == barrier.getInfo()) {
+                if (this.sisaChips == 0) {
+                    world[this.p.getX() - 1][this.p.getY()] = new Tile(this.p.getX() - 1, this.p.getY());
+
+                }
             } else if (world[this.p.getX() - 1][this.p.getY()].getInfo() == chips.getInfo()) {
                 this.p.moveUp();
                 this.sisaChips--;
@@ -379,6 +386,11 @@ public class Board {
                     } else {
                         this.p.endGame();
                     }
+                }
+            } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == barrier.getInfo()) {
+                if (this.sisaChips == 0) {
+                    world[this.p.getX() + 1][this.p.getY()] = new Tile(this.p.getX() - 1, this.p.getY());
+
                 }
             } else if (world[this.p.getX() + 1][this.p.getY()].getInfo() == chips.getInfo()) {
                 this.p.moveDown();
@@ -447,6 +459,11 @@ public class Board {
             } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == chips.getInfo()) {
                 this.p.moveLeft();
                 this.sisaChips--;
+            } else if (world[this.p.getX()][this.p.getY() - 1].getInfo() == barrier.getInfo()) {
+                if (this.sisaChips == 0) {
+                    world[this.p.getX()][this.p.getY() - 1] = new Tile(this.p.getX() - 1, this.p.getY());
+
+                }
             } else {
                 this.p.moveLeft();
             }
@@ -505,6 +522,11 @@ public class Board {
                     } else {
                         this.p.endGame();
                     }
+                }
+            } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == barrier.getInfo()) {
+                if (this.sisaChips == 0) {
+                    world[this.p.getX()][this.p.getY() + 1] = new Tile(this.p.getX() - 1, this.p.getY());
+
                 }
             } else if (world[this.p.getX()][this.p.getY() + 1].getInfo() == chips.getInfo()) {
                 this.p.moveRight();

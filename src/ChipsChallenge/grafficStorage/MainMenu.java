@@ -5,6 +5,7 @@
  */
 package ChipsChallenge.grafficStorage;
 
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -31,6 +32,7 @@ public class MainMenu extends javax.swing.JFrame {
         this.pack();
         this.setVisible(true);
         this.setResizable(false);
+
     }
 
     /**
@@ -106,17 +108,19 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         JFrame frame = new JFrame("Ash's Challenge");
         frame.setBackground(Color.GREEN);
         frame.pack();
-        frame.add(new ChipImageDrawer());
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        ChipImageDrawer gui = new ChipImageDrawer();
         frame.pack();
+        frame.getContentPane().add(gui);
         frame.setSize(new Dimension(700, 700));
-        frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(gui);
         frame.setVisible(true);
-        
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

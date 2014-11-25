@@ -43,6 +43,7 @@ public class ChipImageDrawer extends JPanel {
     private Image kunci;
     private Image theEnd;
     private Image youLose;
+    private Image barrier;
     private Image S;
     private Image I;
     private Image A;
@@ -61,7 +62,7 @@ public class ChipImageDrawer extends JPanel {
      * Konstruktor
      */
     public ChipImageDrawer() {
-       
+
         setFocusable(true);
         this.cc = new ChipsController();
         loadImages();
@@ -129,6 +130,7 @@ public class ChipImageDrawer extends JPanel {
             this.kunci = ImageIO.read(new File("src\\Image\\copper.png"));
             this.theEnd = ImageIO.read(new File("src\\Image\\win.jpg"));
             this.youLose = ImageIO.read(new File("src\\Image\\Joker_laughing.gif"));
+            this.barrier = ImageIO.read(new File("src\\Image\\barrier.png"));
             this.S = ImageIO.read(new File("src\\Image\\S.png"));
             this.I = ImageIO.read(new File("src\\Image\\I.png"));
             this.A = ImageIO.read(new File("src\\Image\\A.png"));
@@ -168,6 +170,8 @@ public class ChipImageDrawer extends JPanel {
                     g2d.drawImage(api, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == '#') {
                     g2d.drawImage(chip, i * 32, j * 32, this);
+                } else if (cc.getTileInfo(j, i) == 'b') {
+                    g2d.drawImage(barrier, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == 'o' && cc.getArahKepala() == 2) {
                     g2d.drawImage(playerBawah, i * 32, j * 32, this);
                 } else if (cc.getTileInfo(j, i) == 'o' && cc.getArahKepala() == 4) {
@@ -194,4 +198,5 @@ public class ChipImageDrawer extends JPanel {
         }
 
     }
+
 }
