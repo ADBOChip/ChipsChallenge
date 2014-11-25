@@ -61,7 +61,7 @@ public class ChipImageDrawer extends JPanel {
      * Konstruktor
      */
     public ChipImageDrawer() {
-
+       
         setFocusable(true);
         this.cc = new ChipsController();
         loadImages();
